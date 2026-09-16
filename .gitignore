@@ -1,0 +1,134 @@
+
+### `.gitignore`
+
+For your Flask + ML + OCR project, use this:
+
+```gitignore
+# ==========================================
+# Python
+# ==========================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Python virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ==========================================
+# Flask
+# ==========================================
+
+instance/
+.webassets-cache/
+
+# ==========================================
+# Environment Variables / Secrets
+# ==========================================
+
+.env
+.env.*
+!.env.example
+
+# ==========================================
+# IDE / Editors
+# ==========================================
+
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ==========================================
+# Operating System
+# ==========================================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# Logs
+# ==========================================
+
+*.log
+logs/
+
+# ==========================================
+# Uploaded Files
+# ==========================================
+
+uploads/
+uploaded_files/
+temp/
+tmp/
+
+# Keep upload directories but ignore their contents
+!uploads/.gitkeep
+!uploaded_files/.gitkeep
+
+# ==========================================
+# Machine Learning Temporary Files
+# ==========================================
+
+*.joblib.tmp
+*.pkl.tmp
+*.model.tmp
+
+# ==========================================
+# Jupyter Notebook
+# ==========================================
+
+.ipynb_checkpoints/
+
+# ==========================================
+# Testing / Coverage
+# ==========================================
+
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# ==========================================
+# Build / Distribution
+# ==========================================
+
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ==========================================
+# OS / Temporary Files
+# ==========================================
+
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ==========================================
+# Secrets / Credentials
+# ==========================================
+
+credentials.json
+secrets.json
+token.json
+
+# ==========================================
+# Local Database
+# ==========================================
+
+*.db
+*.sqlite
+*.sqlite3

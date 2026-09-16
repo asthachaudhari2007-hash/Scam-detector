@@ -1,0 +1,3262 @@
+!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Sathi — Scam Checker & Digital Help for Seniors</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        /* =========================
+           BASIC RESET
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            min-height: 100%;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, sans-serif;
+            color: #2A2420;
+            background-color: #FBF7F0;
+            background-image:
+                radial-gradient(rgba(58, 51, 42, 0.05) 1px, transparent 1.5px),
+                radial-gradient(circle at 12% 8%, rgba(15, 110, 93, 0.10) 0%, rgba(15, 110, 93, 0) 40%),
+                radial-gradient(circle at 88% 18%, rgba(232, 151, 58, 0.12) 0%, rgba(232, 151, 58, 0) 38%),
+                radial-gradient(circle at 50% 100%, rgba(15, 110, 93, 0.06) 0%, rgba(15, 110, 93, 0) 45%);
+            background-size: 22px 22px, auto, auto, auto;
+            background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, .learn-title, .verdict-label, .tab-btn, button {
+            font-family: 'Poppins', 'Noto Sans Devanagari', -apple-system, sans-serif;
+        }
+
+        .wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #0F6E5D 0%, #0B5548 100%);
+            border-radius: 24px;
+            padding: 36px 24px 32px;
+            box-shadow: 0 12px 30px rgba(15, 110, 93, 0.25);
+        }
+
+        header h1 {
+            font-size: 40px;
+            font-weight: 800;
+            margin: 0 0 10px;
+            color: #FFFDF8;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #D3EBE5;
+            line-height: 1.5;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* =========================
+           LANGUAGE TOGGLE
+        ========================= */
+
+        .lang-toggle-row {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .lang-btn {
+            background: #F5F0E8;
+            color: #3A332A;
+            border: 2px solid #E9E1D0;
+            padding: 8px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 999px;
+            cursor: pointer;
+        }
+
+        .lang-btn:hover {
+            background: #E4DCC8;
+        }
+
+        .lang-btn.active {
+            background: #0F6E5D;
+            border-color: #0F6E5D;
+            color: white;
+        }
+
+        /* =========================
+           INPUT CARD
+        ========================= */
+
+        main {
+            background: #FFFDF8;
+            padding: 28px;
+            border-radius: 24px;
+            box-shadow: 0 10px 28px rgba(58, 51, 42, 0.08);
+            border: 1px solid #F0E8D8;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .module-heading {
+            font-size: 19px;
+            font-weight: bold;
+            color: #0F6E5D;
+            margin-bottom: 14px;
+        }
+
+        /* =========================
+           MODULE TAB NAVIGATION
+        ========================= */
+
+        .tab-bar {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 28px;
+            background: #F5F0E8;
+            border-radius: 16px;
+            padding: 6px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            color: #7A7160;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .tab-btn:hover {
+            color: #2A2420;
+        }
+
+        .tab-btn.active {
+            color: #FFFDF8;
+            background: #0F6E5D;
+            box-shadow: 0 4px 10px rgba(15, 110, 93, 0.3);
+        }
+
+        .tab-panel.hidden {
+            display: none;
+        }
+
+        /* =========================
+           HOME TAB
+        ========================= */
+
+        .home-welcome {
+            text-align: center;
+            padding: 8px 10px 28px;
+        }
+
+        .home-welcome-emoji {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .home-welcome-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0B5548;
+            margin-bottom: 10px;
+        }
+
+        .home-welcome-text {
+            font-size: 16px;
+            color: #7A7160;
+            line-height: 1.6;
+            max-width: 460px;
+            margin: 0 auto;
+        }
+
+        .module-card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .module-card {
+            background: #FFFDF8;
+            border: 2px solid #E4DCC8;
+            border-radius: 18px;
+            padding: 26px 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+            font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+        }
+
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(58, 51, 42, 0.12);
+            border-color: #0F6E5D;
+        }
+
+        .module-card-emoji {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .module-card-title {
+            font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #2A2420;
+            margin-bottom: 6px;
+        }
+
+        .module-card-desc {
+            font-size: 14px;
+            color: #7A7160;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 650px) {
+
+            .module-card-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            .tab-btn {
+                font-size: 13px;
+                padding: 10px 4px;
+            }
+
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 18px;
+            border: 2px solid #d6dce5;
+            border-radius: 12px;
+            font-size: 18px;
+            line-height: 1.5;
+            resize: vertical;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #0F6E5D;
+        }
+
+        textarea::placeholder {
+            color: #8993a1;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .button-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            padding: 14px 22px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+        }
+
+        #micBtn {
+            background: #E9F5F2;
+            color: #0B5548;
+        }
+
+        #micBtn:hover {
+            background: #D3EBE5;
+        }
+
+        #checkBtn {
+            flex: 1;
+            background: linear-gradient(135deg, #0F6E5D 0%, #0B5548 100%);
+            color: white;
+            box-shadow: 0 6px 16px rgba(15, 110, 93, 0.28);
+        }
+
+        #checkBtn:hover {
+            box-shadow: 0 8px 20px rgba(15, 110, 93, 0.35);
+            transform: translateY(-1px);
+        }
+
+        button:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        .listening {
+            background: #FBEAE7 !important;
+            color: #8A2E26 !important;
+        }
+
+        /* =========================
+           SCREENSHOT UPLOAD
+        ========================= */
+
+        .screenshot-row {
+            margin-top: 12px;
+        }
+
+        #screenshotBtn {
+            width: 100%;
+            background: #F5F0E8;
+            color: #3A332A;
+            border: 1px solid #E9E1D0;
+        }
+
+        #screenshotBtn:hover {
+            background: #E4DCC8;
+        }
+
+        /* =========================
+           CALL CHECKER
+        ========================= */
+
+        .call-toggle-row {
+            margin-top: 12px;
+        }
+
+        #callToggleBtn {
+            width: 100%;
+            background: #F5F0E8;
+            color: #3A332A;
+            border: 1px solid #E9E1D0;
+        }
+
+        #callToggleBtn:hover {
+            background: #E4DCC8;
+        }
+
+        #callPanel {
+            margin-top: 16px;
+            padding: 20px;
+            border: 2px solid #D3EBE5;
+            border-radius: 14px;
+            background: #f8faff;
+        }
+
+        .call-panel-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .call-options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .call-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            border: 1px solid #E9E1D0;
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .call-option:hover {
+            background: #E9F5F2;
+        }
+
+        .call-option input {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .call-notes-label {
+            display: block;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        #callNotes {
+            width: 100%;
+            min-height: 80px;
+            padding: 12px;
+            border: 2px solid #d6dce5;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            resize: vertical;
+            margin-bottom: 14px;
+        }
+
+        #callCheckBtn {
+            width: 100%;
+            background: #0F6E5D;
+            color: white;
+        }
+
+        #callCheckBtn:hover {
+            background: #0B5548;
+        }
+
+        /* =========================
+           EXAMPLES
+        ========================= */
+
+        .examples {
+            margin-top: 25px;
+        }
+
+        .examples-title {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .example-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .example-btn {
+            background: #F5F0E8;
+            color: #3A332A;
+            border: 1px solid #E9E1D0;
+            padding: 9px 13px;
+            font-size: 14px;
+        }
+
+        .example-btn:hover {
+            background: #E4DCC8;
+        }
+
+        /* =========================
+           LEARN ABOUT SCAMS
+        ========================= */
+
+        .learn-section {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 2px solid #E4DCC8;
+        }
+
+        .learn-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .learn-subtitle {
+            font-size: 15px;
+            color: #7A7160;
+            margin-bottom: 18px;
+        }
+
+        .scam-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .scam-card {
+            background: #FFFDF8;
+            border: 1px solid #E4DCC8;
+            border-radius: 16px;
+            padding: 18px;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .scam-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(58, 51, 42, 0.1);
+            border-color: #BFE3D9;
+        }
+
+        .scam-card-emoji {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .scam-card-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .scam-card-example {
+            font-size: 13px;
+            color: #7A7160;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 650px) {
+
+            .scam-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        /* =========================
+           SCAM DETAIL MODAL
+        ========================= */
+
+        .scam-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .scam-modal {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            max-width: 520px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .scam-modal-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: #F5F0E8;
+            border: none;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #3A332A;
+        }
+
+        .scam-modal-close:hover {
+            background: #E4DCC8;
+        }
+
+        .scam-modal-emoji {
+            font-size: 46px;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .scam-modal-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .scam-modal-example {
+            background: #F5F0E8;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-style: italic;
+            color: #475569;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .scam-modal-block {
+            margin-bottom: 18px;
+        }
+
+        .scam-modal-block h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .scam-modal-block p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #3A332A;
+        }
+
+        .scam-modal-block ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .scam-modal-block li {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 6px;
+            color: #3A332A;
+        }
+
+        .scam-modal-action {
+            background: #FDF1E1;
+            border-left: 6px solid #E8973A;
+            padding: 14px 16px;
+            border-radius: 10px;
+        }
+
+        /* =========================
+           DIGITAL SATHI STEPS LIST
+        ========================= */
+
+        .digital-steps-list {
+            padding-left: 22px;
+            margin: 0;
+        }
+
+        .digital-steps-list li {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+            color: #3A332A;
+        }
+
+        /* =========================
+           ERROR
+        ========================= */
+
+        .error-box {
+            margin-top: 18px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #FBEAE7;
+            color: #8A2E26;
+            font-size: 16px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* =========================
+           RESULT
+        ========================= */
+
+        .result-box {
+            margin-top: 25px;
+        }
+
+        .verdict-card {
+            padding: 22px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: #FFFDF8;
+            border: 2px solid #E4DCC8;
+        }
+
+        .verdict-card.verdict-high {
+            background: #FBEAE7;
+            border-color: #E3A79E;
+        }
+
+        .verdict-card.verdict-medium {
+            background: #FBF1DE;
+            border-color: #E2C285;
+        }
+
+        .verdict-card.verdict-low {
+            background: #EBF5EE;
+            border-color: #A9D3B7;
+        }
+
+        .light {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .light.high {
+            background: #C1443A;
+            box-shadow: 0 0 12px rgba(193, 68, 58, 0.45);
+        }
+
+        .light.medium {
+            background: #B7791B;
+            box-shadow: 0 0 12px rgba(183, 121, 27, 0.45);
+        }
+
+        .light.low {
+            background: #2F7D5C;
+            box-shadow: 0 0 12px rgba(47, 125, 92, 0.45);
+        }
+
+        .verdict-text {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+        }
+
+        .verdict-label {
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .verdict-score {
+            font-size: 17px;
+            color: #7A7160;
+        }
+
+        /* =========================
+           READ ALOUD BUTTON
+        ========================= */
+
+        #readAloudBtn {
+            background: #E9F5F2;
+            color: #0B5548;
+            padding: 10px 16px;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        #readAloudBtn:hover {
+            background: #D3EBE5;
+        }
+
+        #readAloudBtn.speaking {
+            background: #FBEAE7;
+            color: #8A2E26;
+        }
+
+        /* =========================
+           SHARE WITH FAMILY BUTTON
+        ========================= */
+
+        .share-row {
+            margin-top: 12px;
+        }
+
+        #shareResultBtn {
+            width: 100%;
+            background: #EFF8F0;
+            color: #1F5138;
+            border: 1px solid #BFE3C7;
+        }
+
+        #shareResultBtn:hover {
+            background: #DCEFDD;
+        }
+
+        /* =========================
+           META INFORMATION
+        ========================= */
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .meta-card {
+            background: #FFFDF8;
+            border: 1px solid #E4DCC8;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .meta-title {
+            font-size: 13px;
+            color: #7A7160;
+            margin-bottom: 5px;
+        }
+
+        .meta-value {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           ACTION BOX
+        ========================= */
+
+        .action-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 14px;
+            background: #FDF1E1;
+            border-left: 6px solid #E8973A;
+        }
+
+        .action-box h2 {
+            margin-top: 0;
+            font-size: 21px;
+        }
+
+        .action-box p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        /* =========================
+           DETAILS
+        ========================= */
+
+        .details {
+            margin-top: 25px;
+        }
+
+        .details h2 {
+            font-size: 22px;
+            margin-top: 25px;
+        }
+
+        .details ul {
+            padding-left: 25px;
+        }
+
+        .details li {
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           LINK WARNING
+        ========================= */
+
+        .link-warning {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 12px;
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+        }
+
+        .link-warning.safe-link {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .link-warning h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .link-warning p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           DISCLAIMER
+        ========================= */
+
+        footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #7A7160;
+        }
+
+        footer p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            .wrap {
+                padding: 18px 12px;
+            }
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            main {
+                padding: 18px;
+            }
+
+            .button-row {
+                flex-direction: column;
+            }
+
+            #micBtn,
+            #checkBtn {
+                width: 100%;
+            }
+
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .verdict-card {
+                flex-wrap: wrap;
+            }
+
+            .verdict-label {
+                font-size: 23px;
+            }
+
+            .details li {
+                font-size: 16px;
+            }
+
+            .call-options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <h1 id="pageTitle">🤝 Digital Sathi</h1>
+
+        <p class="subtitle" id="pageSubtitle">
+            Your companion for staying safe from scams and confidently
+            using digital payments and apps.
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         LANGUAGE TOGGLE
+         (controls the language of the ANALYSIS output —
+         reasons, tips, action text, and read-aloud voice)
+    ========================== -->
+
+    <div class="lang-toggle-row">
+
+        <button
+            id="langEnBtn"
+            class="lang-btn active"
+            type="button">
+            English
+        </button>
+
+        <button
+            id="langHiBtn"
+            class="lang-btn"
+            type="button">
+            हिंदी
+        </button>
+
+    </div>
+
+
+    <main>
+        <!-- =========================
+             MODULE TAB NAVIGATION
+        ========================== -->
+
+        <div class="tab-bar">
+
+            <button
+                id="tabBtnHome"
+                class="tab-btn active"
+                type="button">
+                🏠 <span id="tabLabelHome">Home</span>
+            </button>
+
+            <button
+                id="tabBtnScamShield"
+                class="tab-btn"
+                type="button">
+                🛡️ <span id="tabLabelScamShield">Scam Shield</span>
+            </button>
+
+            <button
+                id="tabBtnLearn"
+                class="tab-btn"
+                type="button">
+                📚 <span id="tabLabelLearn">Learn</span>
+            </button>
+
+            <button
+                id="tabBtnDigitalSathi"
+                class="tab-btn"
+                type="button">
+                📱 <span id="tabLabelDigitalSathi">Digital Sathi</span>
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             HOME TAB
+        ========================== -->
+
+        <div id="tabHome" class="tab-panel">
+
+            <div class="home-welcome">
+
+                <div class="home-welcome-emoji">🤝</div>
+
+                <div class="home-welcome-title" id="homeWelcomeTitle">
+                    Welcome to Digital Sathi
+                </div>
+
+                <div class="home-welcome-text" id="homeWelcomeText">
+                    Your companion for staying safe online and confidently using digital payments and apps. Choose where you'd like to start.
+                </div>
+
+            </div>
+
+            <div class="module-card-grid">
+
+                <button class="module-card" id="homeCardScamShield" type="button">
+                    <div class="module-card-emoji">🛡️</div>
+                    <div class="module-card-title" id="homeCardScamShieldTitle">Scam Shield</div>
+                    <div class="module-card-desc" id="homeCardScamShieldDesc">
+                        Check if a message, call, or link is a scam
+                    </div>
+                </button>
+
+                <button class="module-card" id="homeCardLearn" type="button">
+                    <div class="module-card-emoji">📚</div>
+                    <div class="module-card-title" id="homeCardLearnTitle">Learn About Scams</div>
+                    <div class="module-card-desc" id="homeCardLearnDesc">
+                        See how common scams work and how to spot them
+                    </div>
+                </button>
+
+                <button class="module-card" id="homeCardDigitalSathi" type="button">
+                    <div class="module-card-emoji">📱</div>
+                    <div class="module-card-title" id="homeCardDigitalSathiTitle">Digital Sathi Guides</div>
+                    <div class="module-card-desc" id="homeCardDigitalSathiDesc">
+                        Step-by-step help for payments and apps
+                    </div>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div id="tabScamShield" class="tab-panel hidden">
+
+
+
+        <!-- =========================
+             INPUT
+        ========================== -->
+
+        <div class="module-heading" id="scamShieldHeading">
+            🛡️ Scam Shield — Check a Message, Call, or Link
+        </div>
+
+        <label for="inputText" class="input-label" id="inputLabel">
+            What did you receive?
+        </label>
+
+        <textarea
+            id="inputText"
+            rows="6"
+            placeholder="Example: Your bank account will be blocked today. Share the OTP sent to your number..."></textarea>
+
+
+        <!-- =========================
+             BUTTONS
+        ========================== -->
+
+        <div class="button-row">
+
+            <button
+                id="micBtn"
+                type="button"
+                title="Speak instead of typing">
+                🎤 Speak
+            </button>
+
+            <button
+                id="checkBtn"
+                type="button">
+                🔍 Check This
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             SCREENSHOT UPLOAD
+        ========================== -->
+
+        <div class="screenshot-row">
+
+            <button
+                id="screenshotBtn"
+                type="button"
+                title="Upload a screenshot of the message to scan it">
+                🖼️ Scan a Screenshot Instead
+            </button>
+
+            <input
+                type="file"
+                id="screenshotInput"
+                accept="image/*"
+                class="hidden">
+
+        </div>
+
+
+        <!-- =========================
+             CALL CHECKER TOGGLE
+        ========================== -->
+
+        <div class="call-toggle-row">
+
+            <button
+                id="callToggleBtn"
+                type="button">
+                📞 Describe a Call Instead
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             CALL CHECKER PANEL
+        ========================== -->
+
+        <div
+            id="callPanel"
+            class="hidden">
+
+            <div class="call-panel-title">
+                What did the caller ask for?
+            </div>
+
+            <div class="call-options-grid">
+
+                <label class="call-option">
+                    <input type="checkbox" value="otp">
+                    OTP
+                </label>
+
+                <label class="call-option">
+                    <input type="checkbox" value="pin">
+                    PIN
+                </label>
+
+                <label class="call-option">
+                    <input type="checkbox" value="bank_details">
+                    Bank details
+                </label>
+
+                <label class="call-option">
+                    <input type="checkbox" value="money_transfer">
+                    Money transfer
+                </label>
+
+                <label class="call-option">
+                    <input type="checkbox" value="remote_access">
+                    Remote access
+                </label>
+
+                <label class="call-option">
+                    <input type="checkbox" value="kyc_update">
+                    KYC update
+                </label>
+
+                <label class="call-option">
+                    <input type="checkbox" value="aadhaar">
+                    Aadhaar details
+                </label>
+
+                <label class="call-option">
+                    <input type="checkbox" value="threatened_arrest">
+                    Threatened arrest
+                </label>
+
+                <label class="call-option">
+                    <input type="checkbox" value="prize_lottery">
+                    Prize/lottery
+                </label>
+
+                <label class="call-option">
+                    <input type="checkbox" value="other">
+                    Something else
+                </label>
+
+            </div>
+
+            <label for="callNotes" class="call-notes-label">
+                Anything else about the call? (optional)
+            </label>
+
+            <textarea
+                id="callNotes"
+                placeholder="Example: He said he was from the bank's Delhi office and sounded very urgent..."></textarea>
+
+            <button
+                id="callCheckBtn"
+                type="button">
+                🔍 Check This Call
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             EXAMPLES
+        ========================== -->
+
+        <div class="examples">
+
+            <div class="examples-title">
+                Try an example:
+            </div>
+
+            <div class="example-buttons">
+
+                <button
+                    class="example-btn"
+                    type="button"
+                    data-example="Your SBI KYC has expired. Update your KYC immediately or your account will be blocked today.">
+                    🏦 Bank/KYC
+                </button>
+
+                <button
+                    class="example-btn"
+                    type="button"
+                    data-example="Aapka ATM card band ho gaya hai. Turant OTP batao card dobara chalu karne ke liye.">
+                    🇮🇳 Hinglish
+                </button>
+
+                <button
+                    class="example-btn"
+                    type="button"
+                    data-example="आपका SBI KYC एक्सपायर हो गया है। तुरंत लिंक पर अपडेट करें वरना खाता बंद हो जाएगा।">
+                    🇮🇳 Hindi
+                </button>
+
+                <button
+                    class="example-btn"
+                    type="button"
+                    data-example="Your OTP for login is 482913. Do not share this OTP with anyone, including bank staff.">
+                    🔐 Genuine OTP
+                </button>
+
+                <button
+                    class="example-btn"
+                    type="button"
+                    data-example="Congratulations! You have won Rs. 1,00,000 in our lucky draw. Pay a processing fee to claim your prize.">
+                    🎁 Prize Scam
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ERROR
+        ========================== -->
+
+        <div
+            id="errorBox"
+            class="error-box hidden">
+        </div>
+
+
+        <!-- =========================
+             RESULT
+        ========================== -->
+
+        <section
+            id="resultBox"
+            class="result-box hidden">
+
+            <!-- Verdict -->
+
+            <div
+                id="verdictCard"
+                class="verdict-card">
+
+                <div
+                    id="verdictLight"
+                    class="light">
+                </div>
+
+                <div class="verdict-text">
+
+                    <span
+                        id="verdictLabel"
+                        class="verdict-label">
+                    </span>
+
+                    <span
+                        id="verdictScore"
+                        class="verdict-score">
+                    </span>
+
+                </div>
+
+                <button
+                    id="readAloudBtn"
+                    type="button"
+                    title="Read this result aloud">
+                    🔊 <span id="readAloudLabel">Read Aloud</span>
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 SHARE WITH FAMILY
+            ========================== -->
+
+            <div class="share-row">
+
+                <button
+                    id="shareResultBtn"
+                    type="button">
+                    📤 <span id="shareResultLabel">Share with Family</span>
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 META INFORMATION
+            ========================== -->
+
+            <div class="meta-grid">
+
+                <div class="meta-card">
+
+                    <div class="meta-title">
+                        🌐 Language
+                    </div>
+
+                    <div
+                        id="languageValue"
+                        class="meta-value">
+                        -
+                    </div>
+
+                </div>
+
+
+                <div class="meta-card">
+
+                    <div class="meta-title">
+                        🚨 Scam Type
+                    </div>
+
+                    <div
+                        id="tacticValue"
+                        class="meta-value">
+                        -
+                    </div>
+
+                </div>
+
+
+                <div class="meta-card">
+
+                    <div class="meta-title">
+                        🔗 Link Status
+                    </div>
+
+                    <div
+                        id="linkValue"
+                        class="meta-value">
+                        No link detected
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 ACTION
+            ========================== -->
+
+            <div class="action-box">
+
+                <h2>
+                    🛑 What should you do?
+                </h2>
+
+                <p id="actionText">
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+                 WHY
+            ========================== -->
+
+            <div class="details">
+
+                <h2>
+                    🔎 Why?
+                </h2>
+
+                <ul id="reasonsList">
+                </ul>
+
+
+                <h2>
+                    🛡️ Safety Tips
+                </h2>
+
+                <ul id="tipsList">
+                </ul>
+
+            </div>
+
+
+            <!-- =========================
+                 LINK ANALYSIS
+            ========================== -->
+
+            <div
+                id="linkWarning"
+                class="link-warning hidden">
+
+                <h2>
+                    🔗 Link Analysis
+                </h2>
+
+                <p id="linkMessage">
+                </p>
+
+                <ul id="linkReasons">
+                </ul>
+
+            </div>
+
+        </section>
+
+    
+        </div>
+
+
+        <div id="tabLearn" class="tab-panel hidden">
+
+<!-- =========================
+             LEARN ABOUT SCAMS
+        ========================== -->
+
+        <div class="learn-section">
+
+            <div class="learn-title" id="learnScamsTitle">
+                📚 Learn About Common Scams
+            </div>
+
+            <div class="learn-subtitle" id="learnScamsSubtitle">
+                Tap a card to see how each scam works and how to protect yourself.
+            </div>
+
+            <div id="scamLibraryGrid" class="scam-grid">
+                <!-- Cards are generated by JavaScript from SCAM_LIBRARY -->
+            </div>
+
+        </div>
+
+
+        
+        </div>
+
+
+        <div id="tabDigitalSathi" class="tab-panel hidden">
+
+<!-- =========================
+             DIGITAL SATHI — GUIDED WALKTHROUGHS
+        ========================== -->
+
+        <div class="learn-section">
+
+            <div class="learn-title" id="digitalSathiTitle">
+                📱 Digital Sathi — Step-by-Step Guides
+            </div>
+
+            <div class="learn-subtitle" id="digitalSathiSubtitle">
+                Tap a task to see simple steps for common digital payments and apps.
+            </div>
+
+            <div id="digitalSathiGrid" class="scam-grid">
+                <!-- Cards generated by JavaScript from DIGITAL_SATHI_LIBRARY -->
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             DIGITAL SATHI DETAIL MODAL
+        ========================== -->
+
+        <div id="digitalModalOverlay" class="scam-modal-overlay hidden">
+
+            <div class="scam-modal">
+
+                <button id="digitalModalClose" class="scam-modal-close" type="button">
+                    ✕
+                </button>
+
+                <div id="digitalModalEmoji" class="scam-modal-emoji"></div>
+                <div id="digitalModalTitle" class="scam-modal-title"></div>
+
+                <div class="scam-modal-block">
+                    <h3 id="digitalStepsHeading">📋 Steps</h3>
+                    <ol id="digitalModalSteps" class="digital-steps-list"></ol>
+                </div>
+
+                <div class="scam-modal-block scam-modal-action">
+                    <h3 id="digitalCautionHeading">⚠️ Safety Reminder</h3>
+                    <p id="digitalModalCaution"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        
+        </div>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p id="footerDisclaimer">
+            ⚠️ This is a screening tool, not a guarantee.
+            When unsure, always verify directly with the official
+            organization using a number or website you already trust.
+        </p>
+
+    </footer>
+
+</div>
+
+
+<!-- =========================
+     SCAM DETAIL MODAL
+========================== -->
+
+<div id="scamModalOverlay" class="scam-modal-overlay hidden">
+
+    <div class="scam-modal">
+
+        <button id="scamModalClose" class="scam-modal-close" type="button">
+            ✕
+        </button>
+
+        <div id="scamModalEmoji" class="scam-modal-emoji"></div>
+        <div id="scamModalTitle" class="scam-modal-title"></div>
+        <div id="scamModalExample" class="scam-modal-example"></div>
+
+        <div class="scam-modal-block">
+            <h3 id="scamHowHeading">🔍 How it works</h3>
+            <p id="scamModalHow"></p>
+        </div>
+
+        <div class="scam-modal-block">
+            <h3 id="scamSignsHeading">🚩 Warning signs</h3>
+            <ul id="scamModalSigns"></ul>
+        </div>
+
+        <div class="scam-modal-block scam-modal-action">
+            <h3 id="scamActionHeading">🛡️ What to do</h3>
+            <p id="scamModalAction"></p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* =========================
+       LANGUAGE STATE
+       (controls output language sent to the backend, and
+       the voice used for Read Aloud)
+    ========================= */
+
+    let currentLang = "en";
+
+    const UI_STRINGS = {
+        en: {
+            title: "🤝 Digital Sathi",
+            subtitle: "Your companion for staying safe from scams and confidently using digital payments and apps.",
+            inputLabel: "What did you receive?",
+            footerDisclaimer: "⚠️ This is a screening tool, not a guarantee. When unsure, always verify directly with the official organization using a number or website you already trust.",
+            readAloud: "Read Aloud",
+            stopReading: "Stop"
+        },
+        hi: {
+            title: "🤝 डिजिटल साथी",
+            subtitle: "धोखाधड़ी से सुरक्षित रहने और डिजिटल भुगतान व ऐप्स को आत्मविश्वास से उपयोग करने में आपका साथी।",
+            inputLabel: "आपको क्या मिला?",
+            footerDisclaimer: "⚠️ यह एक जांच टूल है, गारंटी नहीं। अनिश्चित होने पर, हमेशा किसी विश्वसनीय नंबर या वेबसाइट के माध्यम से सीधे आधिकारिक संस्था से पुष्टि करें।",
+            readAloud: "ज़ोर से पढ़ें",
+            stopReading: "रोकें"
+        }
+    };
+
+    const langEnBtn = document.getElementById("langEnBtn");
+    const langHiBtn = document.getElementById("langHiBtn");
+
+    function applyLanguage(lang) {
+
+        currentLang = lang;
+
+        const strings = UI_STRINGS[lang];
+
+        document.getElementById("pageTitle").textContent = strings.title;
+        document.getElementById("pageSubtitle").textContent = strings.subtitle;
+        document.getElementById("inputLabel").textContent = strings.inputLabel;
+
+        document.getElementById("scamShieldHeading").textContent =
+            lang === "hi" ? "🛡️ स्कैम शील्ड — संदेश, कॉल, या लिंक जांचें" : "🛡️ Scam Shield — Check a Message, Call, or Link";
+
+        document.getElementById("tabLabelScamShield").textContent =
+            lang === "hi" ? "स्कैम शील्ड" : "Scam Shield";
+
+        document.getElementById("tabLabelLearn").textContent =
+            lang === "hi" ? "जानें" : "Learn";
+
+        document.getElementById("tabLabelDigitalSathi").textContent =
+            lang === "hi" ? "डिजिटल साथी" : "Digital Sathi";
+
+        document.getElementById("tabLabelHome").textContent =
+            lang === "hi" ? "होम" : "Home";
+
+        document.getElementById("homeWelcomeTitle").textContent =
+            lang === "hi" ? "डिजिटल साथी में आपका स्वागत है" : "Welcome to Digital Sathi";
+
+        document.getElementById("homeWelcomeText").textContent =
+            lang === "hi"
+                ? "ऑनलाइन सुरक्षित रहने और डिजिटल भुगतान व ऐप्स को आत्मविश्वास से उपयोग करने में आपका साथी। शुरू करने के लिए चुनें।"
+                : "Your companion for staying safe online and confidently using digital payments and apps. Choose where you'd like to start.";
+
+        document.getElementById("homeCardScamShieldTitle").textContent =
+            lang === "hi" ? "स्कैम शील्ड" : "Scam Shield";
+
+        document.getElementById("homeCardScamShieldDesc").textContent =
+            lang === "hi"
+                ? "जांचें कि कोई संदेश, कॉल, या लिंक धोखा है या नहीं"
+                : "Check if a message, call, or link is a scam";
+
+        document.getElementById("homeCardLearnTitle").textContent =
+            lang === "hi" ? "धोखाधड़ी के बारे में जानें" : "Learn About Scams";
+
+        document.getElementById("homeCardLearnDesc").textContent =
+            lang === "hi"
+                ? "देखें कि सामान्य धोखाधड़ी कैसे काम करती है और उन्हें कैसे पहचानें"
+                : "See how common scams work and how to spot them";
+
+        document.getElementById("homeCardDigitalSathiTitle").textContent =
+            lang === "hi" ? "डिजिटल साथी गाइड" : "Digital Sathi Guides";
+
+        document.getElementById("homeCardDigitalSathiDesc").textContent =
+            lang === "hi"
+                ? "भुगतान और ऐप्स के लिए चरण-दर-चरण मदद"
+                : "Step-by-step help for payments and apps";
+        document.getElementById("footerDisclaimer").textContent = strings.footerDisclaimer;
+        document.getElementById("readAloudLabel").textContent = strings.readAloud;
+
+        document.getElementById("shareResultLabel").textContent =
+            lang === "hi" ? "परिवार के साथ साझा करें" : "Share with Family";
+
+        document.getElementById("digitalSathiTitle").textContent =
+            lang === "hi" ? "📱 डिजिटल साथी — चरण-दर-चरण गाइड" : "📱 Digital Sathi — Step-by-Step Guides";
+
+        document.getElementById("digitalSathiSubtitle").textContent =
+            lang === "hi"
+                ? "सामान्य डिजिटल भुगतान और ऐप्स के लिए सरल चरण देखने के लिए किसी कार्य पर टैप करें।"
+                : "Tap a task to see simple steps for common digital payments and apps.";
+
+        document.getElementById("digitalStepsHeading").textContent =
+            lang === "hi" ? "📋 चरण" : "📋 Steps";
+
+        document.getElementById("digitalCautionHeading").textContent =
+            lang === "hi" ? "⚠️ सुरक्षा अनुस्मारक" : "⚠️ Safety Reminder";
+
+        document.getElementById("learnScamsTitle").textContent =
+            lang === "hi" ? "📚 सामान्य धोखाधड़ी के बारे में जानें" : "📚 Learn About Common Scams";
+
+        document.getElementById("learnScamsSubtitle").textContent =
+            lang === "hi"
+                ? "प्रत्येक धोखाधड़ी कैसे काम करती है और खुद को कैसे बचाएं, यह देखने के लिए कार्ड पर टैप करें।"
+                : "Tap a card to see how each scam works and how to protect yourself.";
+
+        document.getElementById("scamHowHeading").textContent =
+            lang === "hi" ? "🔍 यह कैसे काम करता है" : "🔍 How it works";
+
+        document.getElementById("scamSignsHeading").textContent =
+            lang === "hi" ? "🚩 चेतावनी संकेत" : "🚩 Warning signs";
+
+        document.getElementById("scamActionHeading").textContent =
+            lang === "hi" ? "🛡️ क्या करें" : "🛡️ What to do";
+
+        if (typeof renderScamLibraryCards === "function") {
+            renderScamLibraryCards();
+        }
+
+        if (typeof renderDigitalSathiCards === "function") {
+            renderDigitalSathiCards();
+        }
+
+        if (lang === "hi") {
+            langHiBtn.classList.add("active");
+            langEnBtn.classList.remove("active");
+        } else {
+            langEnBtn.classList.add("active");
+            langHiBtn.classList.remove("active");
+        }
+
+        // Stop any ongoing speech when the language changes
+        if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+        }
+
+    }
+
+    langEnBtn.addEventListener("click", function() {
+        applyLanguage("en");
+    });
+
+    langHiBtn.addEventListener("click", function() {
+        applyLanguage("hi");
+    });
+
+
+    /* =========================
+       MODULE TAB NAVIGATION
+    ========================= */
+
+    const tabBtnHome = document.getElementById("tabBtnHome");
+    const tabBtnScamShield = document.getElementById("tabBtnScamShield");
+    const tabBtnLearn = document.getElementById("tabBtnLearn");
+    const tabBtnDigitalSathi = document.getElementById("tabBtnDigitalSathi");
+
+    const tabHome = document.getElementById("tabHome");
+    const tabScamShield = document.getElementById("tabScamShield");
+    const tabLearn = document.getElementById("tabLearn");
+    const tabDigitalSathi = document.getElementById("tabDigitalSathi");
+
+    function switchTab(tabName) {
+
+        const tabs = {
+            home: { btn: tabBtnHome, panel: tabHome },
+            scamShield: { btn: tabBtnScamShield, panel: tabScamShield },
+            learn: { btn: tabBtnLearn, panel: tabLearn },
+            digitalSathi: { btn: tabBtnDigitalSathi, panel: tabDigitalSathi }
+        };
+
+        Object.keys(tabs).forEach(function(key) {
+
+            if (key === tabName) {
+                tabs[key].btn.classList.add("active");
+                tabs[key].panel.classList.remove("hidden");
+            } else {
+                tabs[key].btn.classList.remove("active");
+                tabs[key].panel.classList.add("hidden");
+            }
+
+        });
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+    }
+
+    tabBtnHome.addEventListener("click", function() {
+        switchTab("home");
+    });
+
+    tabBtnScamShield.addEventListener("click", function() {
+        switchTab("scamShield");
+    });
+
+    tabBtnLearn.addEventListener("click", function() {
+        switchTab("learn");
+    });
+
+    tabBtnDigitalSathi.addEventListener("click", function() {
+        switchTab("digitalSathi");
+    });
+
+    // Home tab's big module cards link into the same tabs
+    document.getElementById("homeCardScamShield").addEventListener("click", function() {
+        switchTab("scamShield");
+    });
+
+    document.getElementById("homeCardLearn").addEventListener("click", function() {
+        switchTab("learn");
+    });
+
+    document.getElementById("homeCardDigitalSathi").addEventListener("click", function() {
+        switchTab("digitalSathi");
+    });
+
+
+    /* =========================
+       ELEMENTS
+    ========================= */
+
+    const checkBtn = document.getElementById("checkBtn");
+    const micBtn = document.getElementById("micBtn");
+    const inputText = document.getElementById("inputText");
+
+    const screenshotBtn = document.getElementById("screenshotBtn");
+    const screenshotInput = document.getElementById("screenshotInput");
+
+    const callToggleBtn = document.getElementById("callToggleBtn");
+    const callPanel = document.getElementById("callPanel");
+    const callNotes = document.getElementById("callNotes");
+    const callCheckBtn = document.getElementById("callCheckBtn");
+
+    const resultBox = document.getElementById("resultBox");
+    const errorBox = document.getElementById("errorBox");
+
+    const verdictCard = document.getElementById("verdictCard");
+    const verdictLight = document.getElementById("verdictLight");
+    const verdictLabel = document.getElementById("verdictLabel");
+    const verdictScore = document.getElementById("verdictScore");
+
+    const readAloudBtn = document.getElementById("readAloudBtn");
+
+    const languageValue = document.getElementById("languageValue");
+    const tacticValue = document.getElementById("tacticValue");
+    const linkValue = document.getElementById("linkValue");
+
+    const actionText = document.getElementById("actionText");
+
+    const reasonsList = document.getElementById("reasonsList");
+    const tipsList = document.getElementById("tipsList");
+
+    const linkWarning = document.getElementById("linkWarning");
+    const linkMessage = document.getElementById("linkMessage");
+    const linkReasons = document.getElementById("linkReasons");
+
+
+    /* =========================
+       SCAM LIBRARY DATA
+       (static educational content — matches the tactic
+       categories the classifier already detects)
+    ========================= */
+
+    const SCAM_LIBRARY = [
+        {
+            emoji: "🏦",
+            title_en: "Bank / KYC Scam",
+            title_hi: "बैंक / KYC धोखाधड़ी",
+            example_en: "\"Your account will be blocked today. Update your KYC immediately...\"",
+            example_hi: "\"आपका खाता आज ब्लॉक हो जाएगा। तुरंत अपना KYC अपडेट करें...\"",
+            how_en: "Scammers pretend to be from your bank and claim your account, card, or KYC is about to expire or be blocked. They create panic so you click a fake link or share sensitive details without thinking.",
+            how_hi: "धोखेबाज़ आपके बैंक से होने का दिखावा करते हैं और दावा करते हैं कि आपका खाता, कार्ड, या KYC समाप्त होने वाला है या ब्लॉक होने वाला है। वे घबराहट पैदा करते हैं ताकि आप बिना सोचे-समझे किसी नकली लिंक पर क्लिक करें या संवेदनशील जानकारी साझा करें।",
+            signs_en: [
+                "Urgent language: 'blocked today', 'within 24 hours'",
+                "A link that isn't your bank's official website",
+                "Asks you to 'verify' by entering banking details or OTP",
+                "Poor grammar or generic greeting ('Dear Customer')"
+            ],
+            signs_hi: [
+                "तात्कालिक भाषा: 'आज ब्लॉक', '24 घंटे के भीतर'",
+                "ऐसा लिंक जो आपके बैंक की आधिकारिक वेबसाइट नहीं है",
+                "बैंकिंग विवरण या OTP दर्ज करके 'वेरीफाई' करने के लिए कहना",
+                "खराब व्याकरण या सामान्य अभिवादन ('प्रिय ग्राहक')"
+            ],
+            action_en: "Never click links in such messages. Open your bank's official app or website directly, or visit a branch, to check your account status.",
+            action_hi: "ऐसे संदेशों में लिंक पर कभी क्लिक न करें। अपने खाते की स्थिति जांचने के लिए सीधे अपने बैंक की आधिकारिक ऐप या वेबसाइट खोलें, या किसी शाखा में जाएं।"
+        },
+        {
+            emoji: "🔐",
+            title_en: "OTP Scam",
+            title_hi: "OTP धोखाधड़ी",
+            example_en: "\"Tell me the OTP you just received to verify your account...\"",
+            example_hi: "\"अपना खाता सत्यापित करने के लिए अभी मिला OTP मुझे बताएं...\"",
+            how_en: "The scammer triggers an OTP request (often for a real transaction they're attempting on your account) and then calls or messages you, pretending to be bank staff, asking you to read it out to 'verify' or 'cancel' something.",
+            how_hi: "धोखेबाज़ एक OTP अनुरोध ट्रिगर करता है (अक्सर आपके खाते पर एक असली लेनदेन के लिए जो वे करने की कोशिश कर रहे हैं) और फिर बैंक कर्मचारी होने का दिखावा करते हुए आपको कॉल या मैसेज करता है, कुछ 'वेरीफाई' या 'कैंसिल' करने के लिए उसे पढ़ने को कहता है।",
+            signs_en: [
+                "Anyone asking you to share an OTP over call, SMS, or WhatsApp",
+                "Claims of a suspicious transaction they need your OTP to 'stop'",
+                "Pressure to act before the OTP expires"
+            ],
+            signs_hi: [
+                "कॉल, SMS, या WhatsApp पर OTP साझा करने के लिए कहने वाला कोई भी व्यक्ति",
+                "एक संदिग्ध लेनदेन का दावा जिसे 'रोकने' के लिए उन्हें आपका OTP चाहिए",
+                "OTP समाप्त होने से पहले कार्रवाई करने का दबाव"
+            ],
+            action_en: "Never share an OTP with anyone, for any reason — banks, government agencies, and legitimate companies never ask for it.",
+            action_hi: "किसी भी कारण से किसी के साथ भी OTP साझा न करें — बैंक, सरकारी एजेंसियां, और असली कंपनियां कभी इसकी मांग नहीं करतीं।"
+        },
+        {
+            emoji: "📦",
+            title_en: "Courier Scam",
+            title_hi: "कूरियर धोखाधड़ी",
+            example_en: "\"Your parcel is stuck in customs. Pay a small fee to release it...\"",
+            example_hi: "\"आपका पार्सल कस्टम्स में अटका है। इसे छुड़ाने के लिए एक छोटा शुल्क दें...\"",
+            how_en: "You're told a parcel addressed to you is held up — often due to 'customs charges' or 'incomplete address' — and asked to pay a small fee through a link or make a call where more personal details get extracted.",
+            how_hi: "आपको बताया जाता है कि आपके नाम का एक पार्सल रुका हुआ है — अक्सर 'कस्टम शुल्क' या 'अधूरे पते' के कारण — और एक लिंक के माध्यम से एक छोटा शुल्क देने या कॉल करने के लिए कहा जाता है जहां और व्यक्तिगत विवरण निकाले जाते हैं।",
+            signs_en: [
+                "You weren't expecting any parcel",
+                "A small, oddly specific 'release fee'",
+                "A generic tracking link that isn't the courier's real website"
+            ],
+            signs_hi: [
+                "आप किसी पार्सल की उम्मीद नहीं कर रहे थे",
+                "एक छोटा, अजीब तरह से विशिष्ट 'रिलीज़ शुल्क'",
+                "एक सामान्य ट्रैकिंग लिंक जो कूरियर की असली वेबसाइट नहीं है"
+            ],
+            action_en: "Check directly on the courier company's official app or website using your own tracking number — never through a link sent to you.",
+            action_hi: "अपने खुद के ट्रैकिंग नंबर का उपयोग करके सीधे कूरियर कंपनी की आधिकारिक ऐप या वेबसाइट पर जांचें — कभी भी आपको भेजे गए लिंक के माध्यम से नहीं।"
+        },
+        {
+            emoji: "👮",
+            title_en: "Fake Police / Authority Scam",
+            title_hi: "फर्जी पुलिस / अधिकारी धोखाधड़ी",
+            example_en: "\"You are involved in a criminal case. Pay a fine now to avoid arrest...\"",
+            example_hi: "\"आप एक आपराधिक मामले में शामिल हैं। गिरफ्तारी से बचने के लिए अभी जुर्माना भरें...\"",
+            how_en: "The caller impersonates police, income tax officials, or another authority, claiming your identity was used in a crime or that you owe an urgent fine, and threatens arrest unless you pay immediately.",
+            how_hi: "कॉलर पुलिस, आयकर अधिकारी, या किसी अन्य अधिकारी का रूप धारण करता है, दावा करता है कि आपकी पहचान का उपयोग किसी अपराध में हुआ है या आप पर तत्काल जुर्माना बकाया है, और तुरंत भुगतान न करने पर गिरफ्तारी की धमकी देता है।",
+            signs_en: [
+                "Threats of immediate arrest over a phone call",
+                "Demands for payment through UPI or gift cards to 'settle' a case",
+                "Refusal to give official written documentation"
+            ],
+            signs_hi: [
+                "फोन कॉल पर तत्काल गिरफ्तारी की धमकियां",
+                "किसी मामले को 'निपटाने' के लिए UPI या गिफ्ट कार्ड के माध्यम से भुगतान की मांग",
+                "आधिकारिक लिखित दस्तावेज़ देने से इनकार"
+            ],
+            action_en: "Real government departments do not threaten arrest by phone or demand instant payment. Hang up and verify directly through the department's official contact number.",
+            action_hi: "असली सरकारी विभाग फोन पर गिरफ्तारी की धमकी नहीं देते या तुरंत भुगतान की मांग नहीं करते। फोन काट दें और विभाग के आधिकारिक संपर्क नंबर के माध्यम से सीधे पुष्टि करें।"
+        },
+        {
+            emoji: "🎁",
+            title_en: "Lottery / Prize Scam",
+            title_hi: "लॉटरी / इनाम धोखाधड़ी",
+            example_en: "\"Congratulations! You won ₹1,00,000 in our lucky draw...\"",
+            example_hi: "\"बधाई हो! आपने हमारे लकी ड्रा में ₹1,00,000 जीता है...\"",
+            how_en: "You're told you've won a prize, lottery, or reward you never entered, and asked to pay a 'processing fee' or share banking details to 'release' the winnings — which never actually arrive.",
+            how_hi: "आपको बताया जाता है कि आपने एक ऐसा इनाम, लॉटरी, या पुरस्कार जीता है जिसमें आपने कभी भाग नहीं लिया, और जीत को 'रिलीज़' करने के लिए 'प्रोसेसिंग शुल्क' देने या बैंकिंग विवरण साझा करने के लिए कहा जाता है — जो असल में कभी नहीं मिलती।",
+            signs_en: [
+                "You never entered any contest or draw",
+                "Any request to pay money to receive a 'prize'",
+                "Pressure to act within a short deadline"
+            ],
+            signs_hi: [
+                "आपने कभी किसी प्रतियोगिता या ड्रा में भाग नहीं लिया",
+                "'इनाम' पाने के लिए पैसे देने का कोई भी अनुरोध",
+                "एक छोटी समय-सीमा के भीतर कार्रवाई करने का दबाव"
+            ],
+            action_en: "You cannot win a contest you never entered. Never pay any fee to claim an unexpected prize.",
+            action_hi: "आप ऐसी प्रतियोगिता नहीं जीत सकते जिसमें आपने कभी भाग ही नहीं लिया। अनपेक्षित इनाम पाने के लिए कभी कोई शुल्क न दें।"
+        },
+        {
+            emoji: "💻",
+            title_en: "Tech Support Scam",
+            title_hi: "टेक सपोर्ट धोखाधड़ी",
+            example_en: "\"Your computer has a virus. Give us remote access to fix it now...\"",
+            example_hi: "\"आपके कंप्यूटर में वायरस है। इसे अभी ठीक करने के लिए हमें रिमोट एक्सेस दें...\"",
+            how_en: "A caller claims to be from Microsoft, your antivirus company, or your internet provider, says your device is infected or hacked, and asks for remote access — which they then use to steal data or install malware.",
+            how_hi: "एक कॉलर Microsoft, आपकी एंटीवायरस कंपनी, या आपके इंटरनेट प्रदाता से होने का दावा करता है, कहता है कि आपका डिवाइस संक्रमित या हैक हो गया है, और रिमोट एक्सेस मांगता है — जिसका वे फिर डेटा चुराने या मैलवेयर इंस्टॉल करने के लिए उपयोग करते हैं।",
+            signs_en: [
+                "An unexpected call about a 'virus' on your device",
+                "A request for remote access or to install unfamiliar software",
+                "Urgency to act 'before more damage happens'"
+            ],
+            signs_hi: [
+                "आपके डिवाइस पर 'वायरस' के बारे में एक अनपेक्षित कॉल",
+                "रिमोट एक्सेस के लिए या अनजान सॉफ़्टवेयर इंस्टॉल करने का अनुरोध",
+                "'अधिक नुकसान होने से पहले' कार्रवाई करने की तात्कालिकता"
+            ],
+            action_en: "Never give remote access to your device because of an unsolicited call. Contact the company yourself through their official website if you're unsure.",
+            action_hi: "किसी अनचाही कॉल के कारण अपने डिवाइस का रिमोट एक्सेस कभी न दें। यदि अनिश्चित हों, तो कंपनी से खुद उनकी आधिकारिक वेबसाइट के माध्यम से संपर्क करें।"
+        }
+    ];
+
+
+    /* =========================
+       RENDER SCAM LIBRARY CARDS
+    ========================= */
+
+    const scamLibraryGrid = document.getElementById("scamLibraryGrid");
+
+    function renderScamLibraryCards() {
+
+        scamLibraryGrid.innerHTML = "";
+
+        SCAM_LIBRARY.forEach(function(scam, index) {
+
+            const card = document.createElement("div");
+            card.className = "scam-card";
+
+            const title = currentLang === "hi" ? scam.title_hi : scam.title_en;
+            const example = currentLang === "hi" ? scam.example_hi : scam.example_en;
+
+            card.innerHTML =
+                '<div class="scam-card-emoji">' + scam.emoji + '</div>' +
+                '<div class="scam-card-title">' + title + '</div>' +
+                '<div class="scam-card-example">' + example + '</div>';
+
+            card.addEventListener("click", function() {
+                openScamModal(index);
+            });
+
+            scamLibraryGrid.appendChild(card);
+
+        });
+
+    }
+
+    renderScamLibraryCards();
+
+
+    /* =========================
+       DIGITAL SATHI LIBRARY DATA
+       (bilingual guided walkthroughs for common digital
+       payment and app tasks — static content, no backend)
+    ========================= */
+
+    const DIGITAL_SATHI_LIBRARY = [
+        {
+            emoji: "💸",
+            title_en: "Send Money via UPI",
+            title_hi: "UPI से पैसे भेजें",
+            steps_en: [
+                "Open your UPI app (Google Pay, PhonePe, or Paytm).",
+                "Tap 'Send Money' or the '+' / arrow icon on the home screen.",
+                "Enter the receiver's UPI ID, phone number, or scan their QR code.",
+                "Type the amount you want to send and add a short note if needed.",
+                "Tap 'Pay' or 'Send'.",
+                "Enter your UPI PIN (never share this PIN with anyone) to confirm.",
+                "Wait for the confirmation screen showing 'Payment Successful' before closing the app."
+            ],
+            steps_hi: [
+                "अपना UPI ऐप खोलें (Google Pay, PhonePe, या Paytm)।",
+                "होम स्क्रीन पर 'Send Money' या '+' / तीर आइकन पर टैप करें।",
+                "प्राप्तकर्ता की UPI ID, फोन नंबर दर्ज करें, या उनका QR कोड स्कैन करें।",
+                "जितनी राशि भेजनी है वह टाइप करें और ज़रूरत हो तो एक छोटा नोट जोड़ें।",
+                "'Pay' या 'Send' पर टैप करें।",
+                "पुष्टि करने के लिए अपना UPI PIN डालें (यह PIN किसी के साथ भी साझा न करें)।",
+                "ऐप बंद करने से पहले 'Payment Successful' की पुष्टि स्क्रीन देखने तक प्रतीक्षा करें।"
+            ],
+            caution_en: "Your UPI PIN is like the key to your bank account. Never share it with anyone — not even someone claiming to be from your bank or a UPI app's 'support team'.",
+            caution_hi: "आपका UPI PIN आपके बैंक खाते की चाबी जैसा है। इसे किसी के साथ भी साझा न करें — चाहे वह बैंक या UPI ऐप की 'सपोर्ट टीम' होने का दावा ही क्यों न करे।"
+        },
+        {
+            emoji: "💡",
+            title_en: "Pay an Electricity Bill Online",
+            title_hi: "ऑनलाइन बिजली का बिल भरें",
+            steps_en: [
+                "Open your UPI app or your electricity provider's official app/website.",
+                "Look for 'Bill Payments' or 'Recharge & Pay Bills' on the home screen.",
+                "Select 'Electricity' from the list of billers.",
+                "Choose your state and your specific electricity board/provider.",
+                "Enter your consumer number or account number (found on a past bill).",
+                "The app will show your due amount — confirm it matches your actual bill.",
+                "Tap 'Pay', enter your UPI PIN or card details, and confirm.",
+                "Save or screenshot the payment confirmation for your records."
+            ],
+            steps_hi: [
+                "अपना UPI ऐप या बिजली प्रदाता की आधिकारिक ऐप/वेबसाइट खोलें।",
+                "होम स्क्रीन पर 'Bill Payments' या 'Recharge & Pay Bills' देखें।",
+                "बिलर्स की सूची में से 'Electricity' चुनें।",
+                "अपना राज्य और अपना विशिष्ट बिजली बोर्ड/प्रदाता चुनें।",
+                "अपना उपभोक्ता नंबर या खाता नंबर दर्ज करें (पिछले बिल पर मिलेगा)।",
+                "ऐप आपकी बकाया राशि दिखाएगा — पुष्टि करें कि यह आपके असली बिल से मेल खाती है।",
+                "'Pay' पर टैप करें, अपना UPI PIN या कार्ड विवरण दर्ज करें, और पुष्टि करें।",
+                "अपने रिकॉर्ड के लिए भुगतान पुष्टिकरण को सेव या स्क्रीनशॉट करें।"
+            ],
+            caution_en: "Only pay bills through your electricity board's official app/website or a trusted UPI app. Never pay through a link sent to you by SMS or WhatsApp claiming your power will be cut off.",
+            caution_hi: "बिजली बोर्ड की आधिकारिक ऐप/वेबसाइट या किसी विश्वसनीय UPI ऐप से ही बिल भरें। SMS या WhatsApp पर भेजे गए लिंक से कभी भुगतान न करें, भले ही वह दावा करे कि आपकी बिजली कट जाएगी।"
+        },
+        {
+            emoji: "📱",
+            title_en: "Recharge Your Mobile Number",
+            title_hi: "अपना मोबाइल नंबर रिचार्ज करें",
+            steps_en: [
+                "Open your UPI app or your telecom operator's official app.",
+                "Tap 'Mobile Recharge' on the home screen.",
+                "Select your operator (Jio, Airtel, Vi, BSNL) if not detected automatically.",
+                "Enter the mobile number you want to recharge (it can be your own or someone else's).",
+                "Choose a recharge plan or enter a specific amount.",
+                "Tap 'Proceed to Pay' and confirm with your UPI PIN.",
+                "Wait for the 'Recharge Successful' message before closing the app."
+            ],
+            steps_hi: [
+                "अपना UPI ऐप या अपने टेलीकॉम ऑपरेटर की आधिकारिक ऐप खोलें।",
+                "होम स्क्रीन पर 'Mobile Recharge' पर टैप करें।",
+                "यदि अपने आप पता न चले, तो अपना ऑपरेटर चुनें (Jio, Airtel, Vi, BSNL)।",
+                "जिस मोबाइल नंबर को रिचार्ज करना है वह दर्ज करें (यह आपका खुद का या किसी और का हो सकता है)।",
+                "एक रिचार्ज प्लान चुनें या एक विशिष्ट राशि दर्ज करें।",
+                "'Proceed to Pay' पर टैप करें और अपने UPI PIN से पुष्टि करें।",
+                "ऐप बंद करने से पहले 'Recharge Successful' संदेश की प्रतीक्षा करें।"
+            ],
+            caution_en: "Double-check the mobile number before confirming payment — a recharge sent to the wrong number usually cannot be refunded.",
+            caution_hi: "भुगतान की पुष्टि करने से पहले मोबाइल नंबर की दोबारा जांच करें — गलत नंबर पर भेजा गया रिचार्ज आमतौर पर वापस नहीं मिलता।"
+        },
+        {
+            emoji: "📞",
+            title_en: "Make a WhatsApp Video Call",
+            title_hi: "WhatsApp वीडियो कॉल करें",
+            steps_en: [
+                "Open the WhatsApp app on your phone.",
+                "Tap the 'Chats' tab and find the person you want to call.",
+                "Open their chat by tapping on their name.",
+                "Tap the video camera icon at the top-right of the screen.",
+                "Wait for them to answer — you'll see their video once they pick up.",
+                "To end the call, tap the red phone icon at the bottom of the screen."
+            ],
+            steps_hi: [
+                "अपने फोन पर WhatsApp ऐप खोलें।",
+                "'Chats' टैब पर टैप करें और जिस व्यक्ति को कॉल करना है उसे खोजें।",
+                "उनके नाम पर टैप करके उनकी चैट खोलें।",
+                "स्क्रीन के ऊपरी-दाएं कोने में वीडियो कैमरा आइकन पर टैप करें।",
+                "उनके जवाब देने की प्रतीक्षा करें — जवाब देते ही आपको उनका वीडियो दिखेगा।",
+                "कॉल समाप्त करने के लिए स्क्रीन के नीचे लाल फोन आइकन पर टैप करें।"
+            ],
+            caution_en: "WhatsApp calls are free over Wi-Fi or mobile data. If someone asks you to install a different or unfamiliar 'calling app' to talk to them, be cautious — verify with a family member first.",
+            caution_hi: "WhatsApp कॉल Wi-Fi या मोबाइल डेटा पर मुफ़्त होती हैं। अगर कोई आपसे बात करने के लिए कोई अलग या अनजान 'कॉलिंग ऐप' इंस्टॉल करने को कहे, तो सावधान रहें — पहले परिवार के किसी सदस्य से पुष्टि करें।"
+        },
+        {
+            emoji: "🏦",
+            title_en: "Check Your Bank Balance",
+            title_hi: "अपना बैंक बैलेंस जांचें",
+            steps_en: [
+                "Option 1 — Missed call: Dial your bank's registered 'missed call banking' number (available on your bank's official website or passbook) from your registered mobile number, then hang up after 1-2 rings.",
+                "Wait for an SMS with your balance — this usually arrives within a minute.",
+                "Option 2 — UPI app: Open Google Pay, PhonePe, or your bank's app.",
+                "Tap 'Check Balance' or the bank account icon on the home screen.",
+                "Select your bank account from the list if you have more than one.",
+                "Enter your UPI PIN when asked to view the balance securely."
+            ],
+            steps_hi: [
+                "विकल्प 1 — मिस्ड कॉल: अपने बैंक के पंजीकृत 'मिस्ड कॉल बैंकिंग' नंबर पर (बैंक की आधिकारिक वेबसाइट या पासबुक पर उपलब्ध) अपने पंजीकृत मोबाइल नंबर से कॉल करें, फिर 1-2 घंटी के बाद काट दें।",
+                "बैलेंस बताने वाले SMS की प्रतीक्षा करें — यह आमतौर पर एक मिनट के भीतर आ जाता है।",
+                "विकल्प 2 — UPI ऐप: Google Pay, PhonePe, या अपने बैंक की ऐप खोलें।",
+                "होम स्क्रीन पर 'Check Balance' या बैंक खाता आइकन पर टैप करें।",
+                "यदि आपके एक से अधिक खाते हैं, तो सूची में से अपना बैंक खाता चुनें।",
+                "बैलेंस सुरक्षित रूप से देखने के लिए पूछे जाने पर अपना UPI PIN दर्ज करें।"
+            ],
+            caution_en: "Missed call banking numbers are free and never charge you or ask for OTP/PIN over the call itself. If a 'balance check' call asks you to press buttons and share an OTP, hang up — it's a scam.",
+            caution_hi: "मिस्ड कॉल बैंकिंग नंबर मुफ़्त होते हैं और कभी भी कॉल पर पैसे या OTP/PIN नहीं मांगते। अगर कोई 'बैलेंस चेक' कॉल आपसे बटन दबाने और OTP साझा करने को कहे, तो फोन काट दें — यह धोखा है।"
+        },
+        {
+            emoji: "🚆",
+            title_en: "Book a Train Ticket (IRCTC)",
+            title_hi: "ट्रेन टिकट बुक करें (IRCTC)",
+            steps_en: [
+                "Open the IRCTC Rail Connect app or website (irctc.co.in) — this is the only official booking source.",
+                "Log in with your registered username and password, or register if it's your first time.",
+                "Enter your 'From' station, 'To' station, and date of travel.",
+                "Tap 'Search Trains' and review the list of available trains and classes.",
+                "Select a train and class, then tap 'Book Now'.",
+                "Enter passenger details (name, age, gender) exactly as on a valid ID.",
+                "Choose a payment method (UPI, card, or net banking) and complete payment.",
+                "Save or screenshot the confirmation and PNR number for your journey."
+            ],
+            steps_hi: [
+                "IRCTC Rail Connect ऐप या वेबसाइट (irctc.co.in) खोलें — यह एकमात्र आधिकारिक बुकिंग स्रोत है।",
+                "अपने पंजीकृत यूज़रनेम और पासवर्ड से लॉगिन करें, या पहली बार है तो रजिस्टर करें।",
+                "अपना 'From' स्टेशन, 'To' स्टेशन, और यात्रा की तारीख दर्ज करें।",
+                "'Search Trains' पर टैप करें और उपलब्ध ट्रेनों और श्रेणियों की सूची देखें।",
+                "एक ट्रेन और श्रेणी चुनें, फिर 'Book Now' पर टैप करें।",
+                "यात्री विवरण (नाम, उम्र, लिंग) बिल्कुल वैध पहचान पत्र के अनुसार दर्ज करें।",
+                "भुगतान का तरीका चुनें (UPI, कार्ड, या नेट बैंकिंग) और भुगतान पूरा करें।",
+                "अपनी यात्रा के लिए पुष्टिकरण और PNR नंबर सेव या स्क्रीनशॉट करें।"
+            ],
+            caution_en: "Only book through the official IRCTC app or irctc.co.in. Avoid unofficial 'agents' or websites promising instant confirmed tickets for extra cash — this is a common scam around festival travel season.",
+            caution_hi: "केवल आधिकारिक IRCTC ऐप या irctc.co.in से ही बुक करें। अतिरिक्त पैसे लेकर तुरंत कन्फर्म टिकट देने का वादा करने वाले गैर-आधिकारिक 'एजेंट' या वेबसाइटों से बचें — त्योहारों के मौसम में यह एक आम धोखा है।"
+        },
+        {
+            emoji: "📸",
+            title_en: "Send a Photo on WhatsApp",
+            title_hi: "WhatsApp पर फोटो भेजें",
+            steps_en: [
+                "Open WhatsApp and go to the chat of the person you want to send a photo to.",
+                "Tap the paperclip (📎) or '+' icon near the message box.",
+                "Select 'Gallery' or 'Photos' from the options shown.",
+                "Choose the photo you want to send by tapping on it (a checkmark will appear).",
+                "You can add a short caption if you like by typing in the text box.",
+                "Tap the send arrow (➤) to send the photo."
+            ],
+            steps_hi: [
+                "WhatsApp खोलें और जिस व्यक्ति को फोटो भेजनी है उसकी चैट पर जाएं।",
+                "मैसेज बॉक्स के पास पेपरक्लिप (📎) या '+' आइकन पर टैप करें।",
+                "दिखाए गए विकल्पों में से 'Gallery' या 'Photos' चुनें।",
+                "जो फोटो भेजनी है उस पर टैप करके चुनें (एक चेकमार्क दिखेगा)।",
+                "यदि चाहें तो टेक्स्ट बॉक्स में टाइप करके एक छोटा कैप्शन जोड़ सकते हैं।",
+                "फोटो भेजने के लिए भेजने वाले तीर (➤) पर टैप करें।"
+            ],
+            caution_en: "Be thoughtful about which photos you share and with whom — avoid sending photos of ID cards, bank cards, or documents over chat, even to people you trust, unless truly necessary.",
+            caution_hi: "आप कौन सी फोटो किसके साथ साझा कर रहे हैं, इस पर ध्यान दें — पहचान पत्र, बैंक कार्ड, या दस्तावेज़ों की फोटो चैट पर भेजने से बचें, भले ही वह व्यक्ति भरोसेमंद ही क्यों न हो, जब तक बहुत ज़रूरी न हो।"
+        },
+        {
+            emoji: "💊",
+            title_en: "Order Medicine Online",
+            title_hi: "ऑनलाइन दवा ऑर्डर करें",
+            steps_en: [
+                "Open a trusted pharmacy app (like 1mg, PharmEasy, or Netmeds) or your regular pharmacy's official app/website.",
+                "Search for the medicine name, or tap 'Upload Prescription' if you have a doctor's prescription photo.",
+                "Add the required medicines to your cart, double-checking names and dosages.",
+                "Tap 'Proceed to Checkout' or 'Cart' to review your order.",
+                "Confirm your delivery address is correct and up to date.",
+                "Choose a payment method (UPI, card, or cash on delivery) and place the order.",
+                "Save the order confirmation and tracking details."
+            ],
+            steps_hi: [
+                "एक विश्वसनीय फार्मेसी ऐप खोलें (जैसे 1mg, PharmEasy, या Netmeds) या अपनी नियमित फार्मेसी की आधिकारिक ऐप/वेबसाइट।",
+                "दवा का नाम खोजें, या यदि डॉक्टर के पर्चे की फोटो है तो 'Upload Prescription' पर टैप करें।",
+                "आवश्यक दवाओं को कार्ट में जोड़ें, नाम और खुराक की दोबारा जांच करें।",
+                "अपने ऑर्डर की समीक्षा के लिए 'Proceed to Checkout' या 'Cart' पर टैप करें।",
+                "पुष्टि करें कि आपका डिलीवरी पता सही और अद्यतन है।",
+                "भुगतान का तरीका चुनें (UPI, कार्ड, या कैश ऑन डिलीवरी) और ऑर्डर दें।",
+                "ऑर्डर पुष्टिकरण और ट्रैकिंग विवरण सेव करें।"
+            ],
+            caution_en: "Only use well-known, established pharmacy apps or websites. Never share prescription photos or make payments through links sent by unknown numbers offering 'discounted medicines'.",
+            caution_hi: "केवल जानी-मानी, स्थापित फार्मेसी ऐप या वेबसाइट का उपयोग करें। अनजान नंबरों से 'छूट वाली दवाओं' का प्रस्ताव देने वाले लिंक के माध्यम से पर्चे की फोटो साझा न करें या भुगतान न करें।"
+        }
+    ];
+
+
+    /* =========================
+       RENDER DIGITAL SATHI CARDS
+    ========================= */
+
+    const digitalSathiGrid = document.getElementById("digitalSathiGrid");
+
+    function renderDigitalSathiCards() {
+
+        digitalSathiGrid.innerHTML = "";
+
+        DIGITAL_SATHI_LIBRARY.forEach(function(task, index) {
+
+            const card = document.createElement("div");
+            card.className = "scam-card";
+
+            const title = currentLang === "hi" ? task.title_hi : task.title_en;
+
+            card.innerHTML =
+                '<div class="scam-card-emoji">' + task.emoji + '</div>' +
+                '<div class="scam-card-title">' + title + '</div>';
+
+            card.addEventListener("click", function() {
+                openDigitalModal(index);
+            });
+
+            digitalSathiGrid.appendChild(card);
+
+        });
+
+    }
+
+    renderDigitalSathiCards();
+
+
+    /* =========================
+       DIGITAL SATHI DETAIL MODAL
+    ========================= */
+
+    const digitalModalOverlay = document.getElementById("digitalModalOverlay");
+    const digitalModalClose = document.getElementById("digitalModalClose");
+    const digitalModalEmoji = document.getElementById("digitalModalEmoji");
+    const digitalModalTitle = document.getElementById("digitalModalTitle");
+    const digitalModalSteps = document.getElementById("digitalModalSteps");
+    const digitalModalCaution = document.getElementById("digitalModalCaution");
+
+    function openDigitalModal(index) {
+
+        const task = DIGITAL_SATHI_LIBRARY[index];
+
+        const title = currentLang === "hi" ? task.title_hi : task.title_en;
+        const steps = currentLang === "hi" ? task.steps_hi : task.steps_en;
+        const caution = currentLang === "hi" ? task.caution_hi : task.caution_en;
+
+        digitalModalEmoji.textContent = task.emoji;
+        digitalModalTitle.textContent = title;
+        digitalModalCaution.textContent = caution;
+
+        digitalModalSteps.innerHTML = "";
+
+        steps.forEach(function(step) {
+            const li = document.createElement("li");
+            li.textContent = step;
+            digitalModalSteps.appendChild(li);
+        });
+
+        digitalModalOverlay.classList.remove("hidden");
+
+    }
+
+    function closeDigitalModal() {
+        digitalModalOverlay.classList.add("hidden");
+    }
+
+    digitalModalClose.addEventListener("click", closeDigitalModal);
+
+    digitalModalOverlay.addEventListener("click", function(event) {
+        if (event.target === digitalModalOverlay) {
+            closeDigitalModal();
+        }
+    });
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            closeDigitalModal();
+        }
+    });
+
+
+    /* =========================
+       SCAM DETAIL MODAL
+    ========================= */
+
+    const scamModalOverlay = document.getElementById("scamModalOverlay");
+    const scamModalClose = document.getElementById("scamModalClose");
+    const scamModalEmoji = document.getElementById("scamModalEmoji");
+    const scamModalTitle = document.getElementById("scamModalTitle");
+    const scamModalExample = document.getElementById("scamModalExample");
+    const scamModalHow = document.getElementById("scamModalHow");
+    const scamModalSigns = document.getElementById("scamModalSigns");
+    const scamModalAction = document.getElementById("scamModalAction");
+
+    function openScamModal(index) {
+
+        const scam = SCAM_LIBRARY[index];
+
+        const title = currentLang === "hi" ? scam.title_hi : scam.title_en;
+        const example = currentLang === "hi" ? scam.example_hi : scam.example_en;
+        const how = currentLang === "hi" ? scam.how_hi : scam.how_en;
+        const signs = currentLang === "hi" ? scam.signs_hi : scam.signs_en;
+        const action = currentLang === "hi" ? scam.action_hi : scam.action_en;
+
+        scamModalEmoji.textContent = scam.emoji;
+        scamModalTitle.textContent = title;
+        scamModalExample.textContent = example;
+        scamModalHow.textContent = how;
+        scamModalAction.textContent = action;
+
+        scamModalSigns.innerHTML = "";
+
+        signs.forEach(function(sign) {
+            const li = document.createElement("li");
+            li.textContent = sign;
+            scamModalSigns.appendChild(li);
+        });
+
+        scamModalOverlay.classList.remove("hidden");
+
+    }
+
+    function closeScamModal() {
+        scamModalOverlay.classList.add("hidden");
+    }
+
+    scamModalClose.addEventListener("click", closeScamModal);
+
+    scamModalOverlay.addEventListener("click", function(event) {
+        if (event.target === scamModalOverlay) {
+            closeScamModal();
+        }
+    });
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            closeScamModal();
+        }
+    });
+
+
+    /* =========================
+       READ RESULT ALOUD
+       (uses the browser's built-in speechSynthesis API —
+       no server calls, works offline once the page loads)
+    ========================= */
+
+    let lastResultData = null;
+
+    function buildSpeechText(data) {
+
+        // Compose a short, clear spoken summary rather than
+        // reading every raw field — reasons/tips can be long,
+        // so we read the verdict, top reason, and top tip.
+
+        const parts = [];
+
+        parts.push(data.verdict + ".");
+
+        if (data.reasons && data.reasons.length > 0) {
+            parts.push(data.reasons[0]);
+        }
+
+        if (data.action) {
+            parts.push(data.action);
+        }
+
+        return parts.join(" ");
+
+    }
+
+    function speakResult() {
+
+        if (!window.speechSynthesis) {
+
+            errorBox.textContent =
+                currentLang === "hi"
+                    ? "आपका ब्राउज़र आवाज़ में पढ़ने का समर्थन नहीं करता।"
+                    : "Your browser does not support reading aloud.";
+
+            errorBox.classList.remove("hidden");
+
+            return;
+        }
+
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+            readAloudBtn.classList.remove("speaking");
+            readAloudBtn.querySelector("#readAloudLabel").textContent =
+                UI_STRINGS[currentLang].readAloud;
+            return;
+        }
+
+        if (!lastResultData) {
+            return;
+        }
+
+        const utterance = new SpeechSynthesisUtterance(
+            buildSpeechText(lastResultData)
+        );
+
+        utterance.lang = currentLang === "hi" ? "hi-IN" : "en-IN";
+        utterance.rate = 0.95;
+
+        // Try to pick a matching installed voice, if the browser has one
+        const voices = window.speechSynthesis.getVoices();
+        const matchingVoice = voices.find(function(v) {
+            return v.lang === utterance.lang;
+        });
+        if (matchingVoice) {
+            utterance.voice = matchingVoice;
+        }
+
+        utterance.onstart = function() {
+            readAloudBtn.classList.add("speaking");
+            document.getElementById("readAloudLabel").textContent =
+                UI_STRINGS[currentLang].stopReading;
+        };
+
+        utterance.onend = function() {
+            readAloudBtn.classList.remove("speaking");
+            document.getElementById("readAloudLabel").textContent =
+                UI_STRINGS[currentLang].readAloud;
+        };
+
+        window.speechSynthesis.speak(utterance);
+
+    }
+
+    readAloudBtn.addEventListener("click", speakResult);
+
+
+    /* =========================
+       SHARE WITH FAMILY
+       (uses the Web Share API where available — opens the
+       device's native share sheet, e.g. WhatsApp, SMS, email.
+       Falls back to a direct WhatsApp web link on desktop
+       browsers that don't support navigator.share.)
+    ========================= */
+
+    const shareResultBtn = document.getElementById("shareResultBtn");
+    const shareResultLabel = document.getElementById("shareResultLabel");
+
+    function buildShareText(data) {
+
+        // A fuller, message-style summary — more detail than the
+        // spoken version, formatted for reading in a chat app.
+
+        if (currentLang === "hi") {
+
+            const lines = [
+                "🤝 डिजिटल साथी से सुरक्षा जांच",
+                "",
+                "नतीजा: " + data.verdict + " (" + data.scam_probability + "% धोखे की संभावना)",
+                ""
+            ];
+
+            if (data.reasons && data.reasons.length > 0) {
+                lines.push("कारण:");
+                data.reasons.slice(0, 3).forEach(function(r) {
+                    lines.push("• " + r);
+                });
+                lines.push("");
+            }
+
+            if (data.action) {
+                lines.push("क्या करें: " + data.action);
+            }
+
+            return lines.join("\n");
+
+        }
+
+        const lines = [
+            "🤝 Digital Sathi safety check",
+            "",
+            "Result: " + data.verdict + " (" + data.scam_probability + "% scam likelihood)",
+            ""
+        ];
+
+        if (data.reasons && data.reasons.length > 0) {
+            lines.push("Reasons:");
+            data.reasons.slice(0, 3).forEach(function(r) {
+                lines.push("• " + r);
+            });
+            lines.push("");
+        }
+
+        if (data.action) {
+            lines.push("What to do: " + data.action);
+        }
+
+        return lines.join("\n");
+
+    }
+
+    async function shareResult() {
+
+        if (!lastResultData) {
+            return;
+        }
+
+        const shareText = buildShareText(lastResultData);
+        const shareTitle = currentLang === "hi" ? "डिजिटल साथी सुरक्षा जांच" : "Digital Sathi Safety Check";
+
+        // Prefer the native share sheet when available (mobile
+        // Chrome/Edge, and many desktop browsers now support it).
+        if (navigator.share) {
+
+            try {
+
+                await navigator.share({
+                    title: shareTitle,
+                    text: shareText
+                });
+
+                return;
+
+            } catch (err) {
+                // User cancelled the share sheet, or it failed —
+                // fall through to the WhatsApp link as a backup.
+                console.log("Share cancelled or failed:", err);
+            }
+
+        }
+
+        // Fallback: open a WhatsApp web/app link with the text
+        // pre-filled, letting the person pick who to send it to.
+        const encodedText = encodeURIComponent(shareText);
+        window.open("https://wa.me/?text=" + encodedText, "_blank");
+
+    }
+
+    shareResultBtn.addEventListener("click", shareResult);
+
+
+    /* =========================
+       RENDER RESULT
+       (shared by text-check, screenshot-scan, and
+       call-check, since /check, /scan-image, and
+       /check-call all return the same shape)
+    ========================= */
+
+    function displayResult(data) {
+
+        lastResultData = data;
+
+        /* VERDICT */
+
+        verdictLight.className = "light " + data.level;
+        verdictCard.className = "verdict-card verdict-" + data.level;
+        verdictLabel.textContent = data.verdict;
+        verdictScore.textContent =
+            (currentLang === "hi" ? "धोखे की संभावना: " : "Scam likelihood: ")
+            + data.scam_probability + "%";
+
+        /* LANGUAGE (of the message the user submitted) */
+
+        if (data.language === "hi") {
+            languageValue.textContent =
+                currentLang === "hi" ? "हिंदी / हिंग्लिश" : "Hindi / Hinglish";
+        } else {
+            languageValue.textContent =
+                currentLang === "hi" ? "अंग्रेज़ी" : "English";
+        }
+
+        /* SCAM TYPE */
+
+        const generalLabel = currentLang === "hi" ? "सामान्य" : "General";
+
+        if (data.primary_tactic &&
+            data.primary_tactic !== "Unknown / General" &&
+            data.primary_tactic !== "अज्ञात / सामान्य") {
+            tacticValue.textContent = data.primary_tactic;
+        } else {
+            tacticValue.textContent = generalLabel;
+        }
+
+        /* LINK STATUS */
+
+        if (!data.link_analysis || !data.link_analysis.has_link) {
+
+            linkValue.textContent =
+                currentLang === "hi" ? "कोई लिंक नहीं मिला" : "No link detected";
+
+        } else {
+
+            const risk = data.link_analysis.risk;
+
+            if (risk === "high") {
+                linkValue.textContent =
+                    currentLang === "hi" ? "⚠️ उच्च जोखिम" : "⚠️ High Risk";
+            } else if (risk === "medium") {
+                linkValue.textContent =
+                    currentLang === "hi" ? "⚠️ ध्यान से जांचें" : "⚠️ Check Carefully";
+            } else {
+                linkValue.textContent =
+                    currentLang === "hi" ? "✓ कम जोखिम" : "✓ Low Risk";
+            }
+
+        }
+
+        /* ACTION */
+
+        actionText.textContent = data.action || "";
+
+        /* WHY */
+
+        reasonsList.innerHTML = "";
+
+        if (data.selected_options && data.selected_options.length > 0) {
+
+            const li = document.createElement("li");
+            const prefix = currentLang === "hi" ? "कॉलर ने मांगा: " : "Caller asked for: ";
+            li.textContent = prefix + data.selected_options.join(", ");
+            reasonsList.appendChild(li);
+
+        }
+
+        if (data.reasons && data.reasons.length > 0) {
+
+            data.reasons.forEach(function(reason) {
+                const li = document.createElement("li");
+                li.textContent = reason;
+                reasonsList.appendChild(li);
+            });
+
+        } else if (!data.selected_options || data.selected_options.length === 0) {
+
+            const li = document.createElement("li");
+            li.textContent =
+                currentLang === "hi"
+                    ? "कोई अतिरिक्त चेतावनी संकेत नहीं मिला।"
+                    : "No additional warning signs detected.";
+            reasonsList.appendChild(li);
+
+        }
+
+        /* SAFETY TIPS */
+
+        tipsList.innerHTML = "";
+
+        if (data.tips && data.tips.length > 0) {
+
+            data.tips.forEach(function(tip) {
+                const li = document.createElement("li");
+                li.textContent = tip;
+                tipsList.appendChild(li);
+            });
+
+        }
+
+        /* LINK ANALYSIS PANEL */
+
+        linkWarning.classList.add("hidden");
+        linkReasons.innerHTML = "";
+
+        if (data.link_analysis && data.link_analysis.has_link) {
+
+            linkWarning.classList.remove("hidden");
+
+            const risk = data.link_analysis.risk;
+
+            if (risk === "high") {
+
+                linkMessage.textContent = currentLang === "hi"
+                    ? "⚠️ इस लिंक में कई संदिग्ध संकेत हैं। गंतव्य की पुष्टि किए बिना इसे न खोलें।"
+                    : "⚠️ This link has multiple suspicious indicators. Avoid clicking it until you verify the destination.";
+                linkWarning.classList.remove("safe-link");
+
+            } else if (risk === "medium") {
+
+                linkMessage.textContent = currentLang === "hi"
+                    ? "⚠️ इस लिंक में कुछ चेतावनी संकेत हैं। खोलने से पहले स्वतंत्र रूप से पुष्टि करें।"
+                    : "⚠️ This link has some warning signs. Verify it independently before opening.";
+                linkWarning.classList.remove("safe-link");
+
+            } else {
+
+                linkMessage.textContent = currentLang === "hi"
+                    ? "✓ इस बुनियादी जांच में कोई बड़ा चेतावनी संकेत नहीं मिला।"
+                    : "✓ No major link warning signs were detected by this basic check.";
+                linkWarning.classList.add("safe-link");
+
+            }
+
+            if (data.link_analysis.reasons && data.link_analysis.reasons.length > 0) {
+
+                data.link_analysis.reasons.forEach(function(reason) {
+                    const li = document.createElement("li");
+                    li.textContent = reason;
+                    linkReasons.appendChild(li);
+                });
+
+            }
+
+        }
+
+        /* SHOW RESULT */
+
+        resultBox.classList.remove("hidden");
+
+        resultBox.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
+
+    /* =========================
+       CHECK MESSAGE (typed/pasted text)
+    ========================= */
+
+    async function checkMessage() {
+
+        const text = inputText.value.trim();
+
+        errorBox.classList.add("hidden");
+        resultBox.classList.add("hidden");
+
+        if (!text) {
+
+            errorBox.textContent = currentLang === "hi"
+                ? "कृपया जांचने के लिए कुछ टाइप या पेस्ट करें।"
+                : "Please type or paste something to check.";
+
+            errorBox.classList.remove("hidden");
+
+            return;
+        }
+
+
+        checkBtn.disabled = true;
+        checkBtn.textContent = currentLang === "hi" ? "🔄 जांच रहे हैं..." : "🔄 Checking...";
+
+
+        try {
+
+            const res = await fetch("/check", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    text: text,
+                    lang: currentLang
+                })
+
+            });
+
+
+            const data = await res.json();
+
+
+            if (!res.ok) {
+
+                errorBox.textContent =
+                    data.error ||
+                    "Something went wrong. Please try again.";
+
+                errorBox.classList.remove("hidden");
+
+                return;
+            }
+
+
+            displayResult(data);
+
+        }
+
+
+        catch (err) {
+
+            console.error(err);
+
+            errorBox.textContent = currentLang === "hi"
+                ? "जांचकर्ता तक नहीं पहुंच सका। कृपया सुनिश्चित करें कि Flask सर्वर चल रहा है।"
+                : "Could not reach the checker. Please make sure the Flask server is running.";
+
+            errorBox.classList.remove("hidden");
+
+        }
+
+
+        finally {
+
+            checkBtn.disabled = false;
+
+            checkBtn.textContent =
+                currentLang === "hi" ? "🔍 जांचें" : "🔍 Check This";
+
+        }
+
+    }
+
+
+    /* =========================
+       CHECK BUTTON
+    ========================= */
+
+    checkBtn.addEventListener(
+        "click",
+        checkMessage
+    );
+
+
+    /* =========================
+       SCREENSHOT UPLOAD
+       (calls /scan-image, which OCRs AND classifies
+       in one step — the response has the same shape
+       as /check, plus an extracted_text field)
+    ========================= */
+
+    screenshotBtn.addEventListener("click", function() {
+        screenshotInput.click();
+    });
+
+    screenshotInput.addEventListener("change", async function() {
+
+        const file = screenshotInput.files[0];
+
+        if (!file) {
+            return;
+        }
+
+        errorBox.classList.add("hidden");
+        resultBox.classList.add("hidden");
+
+        screenshotBtn.disabled = true;
+        screenshotBtn.textContent = "🔄 Reading screenshot...";
+
+        const formData = new FormData();
+        formData.append("image", file);
+        formData.append("lang", currentLang);
+
+        try {
+
+            const res = await fetch("/scan-image", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+
+                errorBox.textContent =
+                    data.error ||
+                    "Couldn't read text from that image.";
+
+                errorBox.classList.remove("hidden");
+
+                return;
+            }
+
+            inputText.value = data.extracted_text || "";
+
+            displayResult(data);
+
+        } catch (err) {
+
+            console.error(err);
+
+            errorBox.textContent =
+                "Could not reach the server to scan the screenshot.";
+
+            errorBox.classList.remove("hidden");
+
+        } finally {
+
+            screenshotBtn.disabled = false;
+            screenshotBtn.textContent = "🖼️ Scan a Screenshot Instead";
+            screenshotInput.value = "";
+
+        }
+
+    });
+
+
+    /* =========================
+       CALL CHECKER
+       (toggle panel + calls /check-call, which builds
+       a synthetic description from the checked boxes
+       and any notes, then classifies it the same way
+       as a pasted message)
+    ========================= */
+
+    callToggleBtn.addEventListener("click", function() {
+        callPanel.classList.toggle("hidden");
+    });
+
+    callCheckBtn.addEventListener("click", async function() {
+
+        errorBox.classList.add("hidden");
+        resultBox.classList.add("hidden");
+
+        const checkedBoxes = callPanel.querySelectorAll(
+            ".call-option input[type='checkbox']:checked"
+        );
+
+        const selectedOptions = Array.from(checkedBoxes).map(function(box) {
+            return box.value;
+        });
+
+        const notes = callNotes.value.trim();
+
+        if (selectedOptions.length === 0 && !notes) {
+
+            errorBox.textContent = currentLang === "hi"
+                ? "कृपया कम से कम एक विकल्प चुनें या बताएं कि कॉल में क्या हुआ था।"
+                : "Please select at least one option or describe what happened on the call.";
+
+            errorBox.classList.remove("hidden");
+
+            return;
+        }
+
+        callCheckBtn.disabled = true;
+        callCheckBtn.textContent = "🔄 Checking...";
+
+        try {
+
+            const res = await fetch("/check-call", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    options: selectedOptions,
+                    notes: notes,
+                    lang: currentLang
+                })
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+
+                errorBox.textContent =
+                    data.error ||
+                    "Something went wrong. Please try again.";
+
+                errorBox.classList.remove("hidden");
+
+                return;
+            }
+
+            displayResult(data);
+
+        } catch (err) {
+
+            console.error(err);
+
+            errorBox.textContent =
+                "Could not reach the checker. Please make sure the Flask server is running.";
+
+            errorBox.classList.remove("hidden");
+
+        } finally {
+
+            callCheckBtn.disabled = false;
+            callCheckBtn.textContent = "🔍 Check This Call";
+
+        }
+
+    });
+
+
+    /* =========================
+       ENTER EXAMPLE
+    ========================= */
+
+    document
+        .querySelectorAll(".example-btn")
+        .forEach(function(button) {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    inputText.value =
+                        button.dataset.example;
+
+                    inputText.focus();
+
+                }
+            );
+
+        });
+
+
+    /* =========================
+       CTRL + ENTER
+    ========================= */
+
+    inputText.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.ctrlKey &&
+                event.key === "Enter") {
+
+                checkMessage();
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       VOICE INPUT
+    ========================= */
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+    let recognition = null;
+
+    let isListening = false;
+
+
+    if (SpeechRecognition) {
+
+        recognition =
+            new SpeechRecognition();
+
+        recognition.continuous = false;
+
+        recognition.interimResults = false;
+
+
+        recognition.addEventListener(
+            "result",
+            function(event) {
+
+                const transcript =
+                    event.results[0][0].transcript;
+
+                inputText.value =
+                    inputText.value
+                        ? inputText.value.trim()
+                          + " "
+                          + transcript
+                        : transcript;
+
+            }
+        );
+
+
+        recognition.addEventListener(
+            "end",
+            function() {
+
+                isListening = false;
+
+                micBtn.textContent =
+                    "🎤 Speak";
+
+                micBtn.classList.remove(
+                    "listening"
+                );
+
+            }
+        );
+
+
+        recognition.addEventListener(
+            "error",
+            function(event) {
+
+                console.error(
+                    "Speech recognition error:",
+                    event.error
+                );
+
+                isListening = false;
+
+                micBtn.textContent =
+                    "🎤 Speak";
+
+                micBtn.classList.remove(
+                    "listening"
+                );
+
+
+                errorBox.textContent =
+                    "Couldn't hear you clearly. Please try again or type the message.";
+
+                errorBox.classList.remove(
+                    "hidden"
+                );
+
+            }
+        );
+
+
+        micBtn.addEventListener(
+            "click",
+            function() {
+
+                if (isListening) {
+
+                    recognition.stop();
+
+                    return;
+                }
+
+
+                errorBox.classList.add(
+                    "hidden"
+                );
+
+
+                isListening = true;
+
+                micBtn.textContent =
+                    "⏹ Listening...";
+
+                micBtn.classList.add(
+                    "listening"
+                );
+
+                // Match the mic's expected language to the
+                // currently selected output language.
+                recognition.lang = currentLang === "hi" ? "hi-IN" : "en-IN";
+
+
+                try {
+
+                    recognition.start();
+
+                } catch (error) {
+
+                    console.log(error);
+
+                }
+
+            }
+        );
+
+    } else {
+
+        micBtn.classList.add(
+            "hidden"
+        );
+
+    }
+
+</script>
+
+</body>
+</html>

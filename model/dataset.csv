@@ -1,0 +1,421 @@
+text,label,tactic
+"Your electricity connection will be cut off tonight due to unpaid bill. Pay Rs. 1,00,000 immediately at http://accountsafe-verify.com to avoid disconnection.",scam,fake_authority
+"Congratulations Rahul! You have won Rs. 1,00,000 in the lucky draw. Click http://secure-bank-update.in to claim your prize now.",scam,lottery_prize
+Illegal items were found in a parcel booked using your ID. Contact us immediately or face legal action.,scam,courier_scam
+"बधाई हो Anil जी! आपने लकी ड्रा में Rs. 15,000 जीता है। अभी http://parcel-track-in.net पर क्लिक करके क्लेम करें।",scam,lottery_prize
+Yeh PNB security team hai. Aapke number par aaya OTP hume turant batayein.,scam,otp_request
+"आपका OTP 482913 है। इसे किसी के साथ साझा न करें, बैंक कर्मचारी के साथ भी नहीं। यह 10 मिनट के लिए मान्य है।",genuine,otp_genuine_context
+482913 is your one time password for the transaction. Never share your OTP with anyone for any reason.,genuine,otp_genuine_context
+"Aapka Axis Bank credit card bill Rs. 3,200 ka hai, 15 tarikh tak bhar dein.",genuine,bank_alert_real
+"Police department se call hai, aapke Aadhaar ka misuse crime mein hua hai, turant call back karein.",scam,fake_authority
+"Dear Rahul, your Axis Bank credit card bill of Rs. 3,200 is due on 15th. Please pay before the due date to avoid late fee.",genuine,bank_alert_real
+This is a reminder that your electricity meter reading is scheduled for next Monday.,genuine,appointment_reminder
+"Dear winner, your lottery ticket has been selected for Rs. 15,000. Contact us urgently before the offer expires.",scam,lottery_prize
+"Your mobile number has won Rs. 15,000 cash prize from a lucky number contest. Visit http://claim-prize-now.co within 24 hours to claim.",scam,lottery_prize
+Yeh SBI security team hai. Aapke number par aaya OTP hume turant batayein.,scam,otp_request
+This is HDFC Bank security team. We need the OTP you just received to verify a suspicious login.,scam,otp_request
+Your gas cylinder booking is confirmed. Delivery expected within 2 days.,genuine,appointment_reminder
+"Aapka number lucky draw mein select hua hai, Rs. 49,999 jeetne ke liye thoda processing fee bhejein.",scam,lottery_prize
+"Aapka ICICI Bank credit card bill Rs. 3,200 ka hai, 15 tarikh tak bhar dein.",genuine,bank_alert_real
+FedEx: Aapka package aaj 2 baje se 6 baje ke beech deliver hoga.,genuine,delivery_notification
+Your device has been hacked. Call our technical team immediately and share your screen to remove the malware.,scam,tech_support
+"Grandpa it's me, I met with an accident and need money for the hospital right now, please don't tell anyone.",scam,family_emergency
+Your account has unusual activity. Please tell us the 6 digit code sent to your phone to secure it now.,scam,otp_request
+URGENT: Your ATM card is deactivated. Call us and provide the OTP to reactivate immediately.,scam,otp_request
+"Congratulations Suresh! You have won Rs. 49,999 in the lucky draw. Click http://secure-bank-update.in to claim your prize now.",scam,lottery_prize
+Illegal items were found in a parcel booked using your ID. Contact us immediately or face legal action.,scam,courier_scam
+"Police department se call hai, aapke Aadhaar ka misuse crime mein hua hai, turant call back karein.",scam,fake_authority
+Warning: your bank app is compromised. Download this tool and install it to secure your device right away.,scam,tech_support
+Your order has been delivered. Thank you for shopping with us. Rate your experience in the app.,genuine,delivery_notification
+Your loyalty points are about to expire. Redeem them on your next purchase this month.,genuine,promotion_genuine
+Get 20% off on your next grocery order this weekend. Use code SAVE20 at checkout.,genuine,promotion_genuine
+Your account has unusual activity. Please tell us the 6 digit code sent to your phone to secure it now.,scam,otp_request
+"Congratulations Rahul! You have won Rs. 1,00,000 in the lucky draw. Click http://secure-bank-update.in to claim your prize now.",scam,lottery_prize
+This is Microsoft support. We detected a virus on your computer. Please give us remote access to fix it now.,scam,tech_support
+"Hi it's your son, I'm stuck at the airport and my card isn't working, can you transfer Rs. 25,000 to this number quickly.",scam,family_emergency
+आपका HDFC Bank KYC एक्सपायर हो गया है। http://parcel-track-in.net पर तुरंत अपडेट करें वरना खाता बंद हो जाएगा।,scam,fake_bank_kyc
+"Dear Sunita, your your bank credit card bill of Rs. 3,200 is due on 15th. Please pay before the due date to avoid late fee.",genuine,bank_alert_real
+FINAL NOTICE: Aapka net banking kal se band ho jayega. PAN Aadhaar verify karein http://claim-prize-now.co par.,scam,fake_bank_kyc
+"Dear customer, your HDFC Bank KYC is expired. Update immediately at http://claim-prize-now.co or your account will be suspended in 24 hours.",scam,fake_bank_kyc
+"Police department se call hai, aapke Aadhaar ka misuse crime mein hua hai, turant call back karein.",scam,fake_authority
+482913 aapka one time password hai transaction ke liye. Kisi ke saath bhi share mat karein.,genuine,otp_genuine_context
+"दादाजी मेरा एक्सीडेंट हो गया है, अस्पताल के लिए तुरंत पैसे भेजो, यह मेरा नया नंबर है।",scam,family_emergency
+"Dear Geeta, your PNB account will be blocked today. Share the OTP sent to your number to keep it active.",scam,otp_request
+"Dear winner, your lottery ticket has been selected for Rs. 9,999. Contact us urgently before the offer expires.",scam,lottery_prize
+Your package could not be delivered due to incomplete address. Confirm your details and pay Rs. 50 at http://bit.ly/verify-kyc.,scam,courier_scam
+"Your OTP for login is 482913. Do not share this OTP with anyone, including bank staff. Valid for 10 minutes.",genuine,otp_genuine_context
+This is a final notice from your bank. Your account access will be blocked unless you update KYC here: http://parcel-track-in.net,scam,fake_bank_kyc
+"बधाई हो Kavita जी! आपने लकी ड्रा में Rs. 15,000 जीता है। अभी http://accountsafe-verify.com पर क्लिक करके क्लेम करें।",scam,lottery_prize
+"Grandpa it's me, I met with an accident and need money for the hospital right now, please don't tell anyone.",scam,family_emergency
+Illegal items were found in a parcel booked using your ID. Contact us immediately or face legal action.,scam,courier_scam
+"Janamdin mubarak ho Ramesh! Din bahut acha guzre, jab free ho tab call karna.",genuine,personal_message
+आपका SBI KYC एक्सपायर हो गया है। http://secure-bank-update.in पर तुरंत अपडेट करें वरना खाता बंद हो जाएगा।,scam,fake_bank_kyc
+FINAL NOTICE: Aapka net banking kal se band ho jayega. PAN Aadhaar verify karein http://secure-bank-update.in par.,scam,fake_bank_kyc
+Your device has been hacked. Call our technical team immediately and share your screen to remove the malware.,scam,tech_support
+Your order #45213 has been shipped and will arrive by Thursday. Track it in the app.,genuine,delivery_notification
+"आपका OTP 482913 है। इसे किसी के साथ साझा न करें, बैंक कर्मचारी के साथ भी नहीं। यह 10 मिनट के लिए मान्य है।",genuine,otp_genuine_context
+Your Axis Bank account is on hold due to incomplete KYC. Click http://claim-prize-now.co now to avoid permanent deactivation.,scam,fake_bank_kyc
+Reminder: Your appointment with Dr. Sharma is scheduled tomorrow at 10 AM at City Hospital.,genuine,appointment_reminder
+"आपका OTP 482913 है। इसे किसी के साथ साझा न करें, बैंक कर्मचारी के साथ भी नहीं। यह 10 मिनट के लिए मान्य है।",genuine,otp_genuine_context
+Police department notice: your Aadhaar has been used in a crime. Call this number immediately to avoid legal action.,scam,fake_authority
+Illegal items were found in a parcel booked using your ID. Contact us immediately or face legal action.,scam,courier_scam
+IMPORTANT: PNB - Your net banking will stop working from tomorrow. Verify your PAN and Aadhaar at http://secure-bank-update.in today.,scam,fake_bank_kyc
+"Police department se call hai, aapke Aadhaar ka misuse crime mein hua hai, turant call back karein.",scam,fake_authority
+"प्रिय Suresh, आपके SBI खाते से UPI भुगतान के लिए Rs. 2,500 डेबिट हुए। शेष राशि Rs. 18,400. यह आप नहीं थे? 1800-XXX पर कॉल करें।",genuine,bank_alert_real
+Illegal items were found in a parcel booked using your ID. Contact us immediately or face legal action.,scam,courier_scam
+This is a reminder that your electricity meter reading is scheduled for next Monday.,genuine,appointment_reminder
+"दादाजी मेरा एक्सीडेंट हो गया है, अस्पताल के लिए तुरंत पैसे भेजो, यह मेरा नया नंबर है।",scam,family_emergency
+FINAL NOTICE: Aapka net banking kal se band ho jayega. PAN Aadhaar verify karein http://bit.ly/verify-kyc par.,scam,fake_bank_kyc
+"Mom I lost my phone, this is my friend's number. I'm in trouble and need Rs. 9,999 urgently, please send it now.",scam,family_emergency
+"दादाजी मेरा एक्सीडेंट हो गया है, अस्पताल के लिए तुरंत पैसे भेजो, यह मेरा नया नंबर है।",scam,family_emergency
+आपका डिवाइस हैक हो गया है। तुरंत हमारी टीम को स्क्रीन शेयर करें मालवेयर हटाने के लिए।,scam,tech_support
+"Mummy mera phone kho gaya hai, yeh friend ka number hai, mujhe turant Rs. 1,00,000 bhejo, kisi ko mat batana.",scam,family_emergency
+Your package could not be delivered due to incomplete address. Confirm your details and pay Rs. 50 at http://accountsafe-verify.com.,scam,courier_scam
+"You are selected as the winner of our anniversary lucky draw of Rs. 15,000. Pay a small processing fee to claim.",scam,lottery_prize
+आपका पार्सल पता अधूरा होने के कारण डिलीवर नहीं हो सका। http://secure-bank-update.in पर विवरण की पुष्टि करें।,scam,courier_scam
+Warning: your bank app is compromised. Download this tool and install it to secure your device right away.,scam,tech_support
+Warning: your bank app is compromised. Download this tool and install it to secure your device right away.,scam,tech_support
+Aapka ATM card band ho gaya hai. Turant OTP batao card dobara chalu karne ke liye.,scam,otp_request
+BlueDart: Your package is out for delivery today between 2 PM and 6 PM.,genuine,delivery_notification
+"दादाजी मेरा एक्सीडेंट हो गया है, अस्पताल के लिए तुरंत पैसे भेजो, यह मेरा नया नंबर है।",scam,family_emergency
+This is TRAI. Your mobile number will be disconnected in 2 hours due to illegal activity. Press 1 to speak to an officer.,scam,fake_authority
+This is a reminder that your electricity meter reading is scheduled for next Monday.,genuine,appointment_reminder
+"Aapka HDFC Bank credit card bill Rs. 3,200 ka hai, 15 tarikh tak bhar dein.",genuine,bank_alert_real
+Police department notice: your Aadhaar has been used in a crime. Call this number immediately to avoid legal action.,scam,fake_authority
+"Your mobile number has won Rs. 1,00,000 cash prize from a lucky number contest. Visit http://claim-prize-now.co within 24 hours to claim.",scam,lottery_prize
+"आपका OTP 482913 है। इसे किसी के साथ साझा न करें, बैंक कर्मचारी के साथ भी नहीं। यह 10 मिनट के लिए मान्य है।",genuine,otp_genuine_context
+Reminder: Your appointment with Dr. Sharma is scheduled tomorrow at 10 AM at City Hospital.,genuine,appointment_reminder
+IMPORTANT: HDFC Bank - Your net banking will stop working from tomorrow. Verify your PAN and Aadhaar at http://bit.ly/verify-kyc today.,scam,fake_bank_kyc
+"Dear Anil, Rs. 2,500 debited from your ICICI Bank account for UPI payment. Available balance Rs. 18,400. Not you? Call 1800-XXX customer care.",genuine,bank_alert_real
+Your SBI account statement for last month is ready. Login to net banking to view or download it.,genuine,bank_alert_real
+We are calling from your internet provider. Your connection will be suspended unless you verify your account PIN.,scam,tech_support
+URGENT: Your ATM card is deactivated. Call us and provide the OTP to reactivate immediately.,scam,otp_request
+FINAL NOTICE: Aapka net banking kal se band ho jayega. PAN Aadhaar verify karein http://accountsafe-verify.com par.,scam,fake_bank_kyc
+Reminder: Your appointment with Dr. Sharma is scheduled tomorrow at 10 AM at City Hospital.,genuine,appointment_reminder
+482913 aapka one time password hai transaction ke liye. Kisi ke saath bhi share mat karein.,genuine,otp_genuine_context
+यह आयकर विभाग है। आपके खिलाफ केस दर्ज हुआ है। गिरफ्तारी से बचने के लिए आज ही जुर्माना भरें।,scam,fake_authority
+Your device has been hacked. Call our technical team immediately and share your screen to remove the malware.,scam,tech_support
+"बधाई हो Meena जी! आपने लकी ड्रा में Rs. 15,000 जीता है। अभी http://claim-prize-now.co पर क्लिक करके क्लेम करें।",scam,lottery_prize
+the courier company: Aapka parcel customs mein ruka hua hai. Turant http://parcel-track-in.net par fee bharke release karayein.,scam,courier_scam
+Illegal items were found in a parcel booked using your ID. Contact us immediately or face legal action.,scam,courier_scam
+"Grandpa it's me, I met with an accident and need money for the hospital right now, please don't tell anyone.",scam,family_emergency
+IMPORTANT: Axis Bank - Your net banking will stop working from tomorrow. Verify your PAN and Aadhaar at http://bit.ly/verify-kyc today.,scam,fake_bank_kyc
+This is a final notice from ICICI Bank. Your account access will be blocked unless you update KYC here: http://secure-bank-update.in,scam,fake_bank_kyc
+"Aapka ICICI Bank credit card bill Rs. 3,200 ka hai, 15 tarikh tak bhar dein.",genuine,bank_alert_real
+This is Microsoft support. We detected a virus on your computer. Please give us remote access to fix it now.,scam,tech_support
+482913 is your one time password for the transaction. Never share your OTP with anyone for any reason.,genuine,otp_genuine_context
+Your PNB account is on hold due to incomplete KYC. Click http://claim-prize-now.co now to avoid permanent deactivation.,scam,fake_bank_kyc
+Police department notice: your Aadhaar has been used in a crime. Call this number immediately to avoid legal action.,scam,fake_authority
+Your HDFC Bank account is on hold due to incomplete KYC. Click http://parcel-track-in.net now to avoid permanent deactivation.,scam,fake_bank_kyc
+"Dear Sunita, your SBI account will be blocked today. Share the OTP sent to your number to keep it active.",scam,otp_request
+Your gas cylinder booking is confirmed. Delivery expected within 2 days.,genuine,appointment_reminder
+We are calling from your internet provider. Your connection will be suspended unless you verify your account PIN.,scam,tech_support
+Your order #45213 has been shipped and will arrive by Thursday. Track it in the app.,genuine,delivery_notification
+This is HDFC Bank security team. We need the OTP you just received to verify a suspicious login.,scam,otp_request
+आपका पार्सल पता अधूरा होने के कारण डिलीवर नहीं हो सका। http://parcel-track-in.net पर विवरण की पुष्टि करें।,scam,courier_scam
+"नमस्ते Sunita, क्या हम रविवार को लंच पर मिल रहे हैं? समय बताइए।",genuine,personal_message
+"नमस्ते Anil, क्या हम रविवार को लंच पर मिल रहे हैं? समय बताइए।",genuine,personal_message
+"बधाई हो Rahul जी! आपने लकी ड्रा में Rs. 49,999 जीता है। अभी http://bit.ly/verify-kyc पर क्लिक करके क्लेम करें।",scam,lottery_prize
+482913 aapka one time password hai transaction ke liye. Kisi ke saath bhi share mat karein.,genuine,otp_genuine_context
+Yeh PNB security team hai. Aapke number par aaya OTP hume turant batayein.,scam,otp_request
+This is TRAI. Your mobile number will be disconnected in 2 hours due to illegal activity. Press 1 to speak to an officer.,scam,fake_authority
+"प्रिय ग्राहक, आपका ICICI Bank खाता आज ब्लॉक हो जाएगा। खाता चालू रखने के लिए OTP शेयर करें।",scam,otp_request
+Aapka PNB account KYC na hone ki wajah se hold par hai. http://secure-bank-update.in par turant update karein.,scam,fake_bank_kyc
+यह आयकर विभाग है। आपके खिलाफ केस दर्ज हुआ है। गिरफ्तारी से बचने के लिए आज ही जुर्माना भरें।,scam,fake_authority
+We are calling from your internet provider. Your connection will be suspended unless you verify your account PIN.,scam,tech_support
+the courier company: Aapka package aaj 2 baje se 6 baje ke beech deliver hoga.,genuine,delivery_notification
+Warning: your bank app is compromised. Download this tool and install it to secure your device right away.,scam,tech_support
+Your package could not be delivered due to incomplete address. Confirm your details and pay Rs. 50 at http://bit.ly/verify-kyc.,scam,courier_scam
+"Hi it's your son, I'm stuck at the airport and my card isn't working, can you transfer Rs. 15,000 to this number quickly.",scam,family_emergency
+"Your electricity connection will be cut off tonight due to unpaid bill. Pay Rs. 49,999 immediately at http://parcel-track-in.net to avoid disconnection.",scam,fake_authority
+"Aapke computer mein virus aaya hai, hum Microsoft support se hain, remote access dijiye theek karne ke liye.",scam,tech_support
+the courier company attempted delivery today but failed. Click http://secure-bank-update.in to reschedule and pay the pending customs charge.,scam,courier_scam
+"Dear Priya, your HDFC Bank account will be blocked today. Share the OTP sent to your number to keep it active.",scam,otp_request
+"Grandpa it's me, I met with an accident and need money for the hospital right now, please don't tell anyone.",scam,family_emergency
+Aapka HDFC Bank account KYC na hone ki wajah se hold par hai. http://claim-prize-now.co par turant update karein.,scam,fake_bank_kyc
+We are calling from your internet provider. Your connection will be suspended unless you verify your account PIN.,scam,tech_support
+IMPORTANT: SBI - Your net banking will stop working from tomorrow. Verify your PAN and Aadhaar at http://bit.ly/verify-kyc today.,scam,fake_bank_kyc
+"प्रिय Anil, आपके HDFC Bank खाते से UPI भुगतान के लिए Rs. 2,500 डेबिट हुए। शेष राशि Rs. 18,400. यह आप नहीं थे? 1800-XXX पर कॉल करें।",genuine,bank_alert_real
+"Dear customer, your HDFC Bank KYC is expired. Update immediately at http://claim-prize-now.co or your account will be suspended in 24 hours.",scam,fake_bank_kyc
+आपका डिवाइस हैक हो गया है। तुरंत हमारी टीम को स्क्रीन शेयर करें मालवेयर हटाने के लिए।,scam,tech_support
+India Post: Your package is out for delivery today between 2 PM and 6 PM.,genuine,delivery_notification
+We are calling from your internet provider. Your connection will be suspended unless you verify your account PIN.,scam,tech_support
+Police department notice: your Aadhaar has been used in a crime. Call this number immediately to avoid legal action.,scam,fake_authority
+Your SBI account is on hold due to incomplete KYC. Click http://parcel-track-in.net now to avoid permanent deactivation.,scam,fake_bank_kyc
+"Hi it's your son, I'm stuck at the airport and my card isn't working, can you transfer Rs. 15,000 to this number quickly.",scam,family_emergency
+This is TRAI. Your mobile number will be disconnected in 2 hours due to illegal activity. Press 1 to speak to an officer.,scam,fake_authority
+Your gas cylinder booking is confirmed. Delivery expected within 2 days.,genuine,appointment_reminder
+"Mummy mera phone kho gaya hai, yeh friend ka number hai, mujhe turant Rs. 9,999 bhejo, kisi ko mat batana.",scam,family_emergency
+"नमस्ते Priya, क्या हम रविवार को लंच पर मिल रहे हैं? समय बताइए।",genuine,personal_message
+Delhivery attempted delivery today but failed. Click http://secure-bank-update.in to reschedule and pay the pending customs charge.,scam,courier_scam
+Your order #45213 has been shipped and will arrive by Thursday. Track it in the app.,genuine,delivery_notification
+"Mom I lost my phone, this is my friend's number. I'm in trouble and need Rs. 1,00,000 urgently, please send it now.",scam,family_emergency
+"Just checking in, how are you feeling today? Let me know if you need anything.",genuine,personal_message
+"Dear Kavita, your Axis Bank account will be blocked today. Share the OTP sent to your number to keep it active.",scam,otp_request
+"Hi it's your son, I'm stuck at the airport and my card isn't working, can you transfer Rs. 1,00,000 to this number quickly.",scam,family_emergency
+Reminder: Your appointment with Dr. Sharma is scheduled tomorrow at 10 AM at City Hospital.,genuine,appointment_reminder
+This is a final notice from Axis Bank. Your account access will be blocked unless you update KYC here: http://bit.ly/verify-kyc,scam,fake_bank_kyc
+482913 aapka one time password hai transaction ke liye. Kisi ke saath bhi share mat karein.,genuine,otp_genuine_context
+This is a reminder that your electricity meter reading is scheduled for next Monday.,genuine,appointment_reminder
+"Dear Vikram, Rs. 2,500 debited from your SBI account for UPI payment. Available balance Rs. 18,400. Not you? Call 1800-XXX customer care.",genuine,bank_alert_real
+This is a final notice from Axis Bank. Your account access will be blocked unless you update KYC here: http://bit.ly/verify-kyc,scam,fake_bank_kyc
+Your loyalty points are about to expire. Redeem them on your next purchase this month.,genuine,promotion_genuine
+This is a final notice from your bank. Your account access will be blocked unless you update KYC here: http://accountsafe-verify.com,scam,fake_bank_kyc
+Aapka ATM card band ho gaya hai. Turant OTP batao card dobara chalu karne ke liye.,scam,otp_request
+"Janamdin mubarak ho Anil! Din bahut acha guzre, jab free ho tab call karna.",genuine,personal_message
+Your order has been delivered. Thank you for shopping with us. Rate your experience in the app.,genuine,delivery_notification
+Your gas cylinder booking is confirmed. Delivery expected within 2 days.,genuine,appointment_reminder
+"Your OTP for login is 482913. Do not share this OTP with anyone, including bank staff. Valid for 10 minutes.",genuine,otp_genuine_context
+Your account has unusual activity. Please tell us the 6 digit code sent to your phone to secure it now.,scam,otp_request
+This is PNB security team. We need the OTP you just received to verify a suspicious login.,scam,otp_request
+"Dear Vikram, Rs. 2,500 debited from your your bank account for UPI payment. Available balance Rs. 18,400. Not you? Call 1800-XXX customer care.",genuine,bank_alert_real
+"Aapke computer mein virus aaya hai, hum Microsoft support se hain, remote access dijiye theek karne ke liye.",scam,tech_support
+Your package could not be delivered due to incomplete address. Confirm your details and pay Rs. 50 at http://secure-bank-update.in.,scam,courier_scam
+Reminder: Your appointment with Dr. Sharma is scheduled tomorrow at 10 AM at City Hospital.,genuine,appointment_reminder
+This is a reminder that your electricity meter reading is scheduled for next Monday.,genuine,appointment_reminder
+Your loyalty points are about to expire. Redeem them on your next purchase this month.,genuine,promotion_genuine
+"प्रिय ग्राहक, आपका Axis Bank खाता आज ब्लॉक हो जाएगा। खाता चालू रखने के लिए OTP शेयर करें।",scam,otp_request
+This is from the Income Tax Department. A case has been filed against you. Pay the pending fine today to avoid arrest.,scam,fake_authority
+Aapka ATM card band ho gaya hai. Turant OTP batao card dobara chalu karne ke liye.,scam,otp_request
+"प्रिय Rahul, आपके ICICI Bank खाते से UPI भुगतान के लिए Rs. 2,500 डेबिट हुए। शेष राशि Rs. 18,400. यह आप नहीं थे? 1800-XXX पर कॉल करें।",genuine,bank_alert_real
+IMPORTANT: PNB - Your net banking will stop working from tomorrow. Verify your PAN and Aadhaar at http://secure-bank-update.in today.,scam,fake_bank_kyc
+"Your electricity connection will be cut off tonight due to unpaid bill. Pay Rs. 1,00,000 immediately at http://bit.ly/verify-kyc to avoid disconnection.",scam,fake_authority
+"Dear Anil, your your bank account will be blocked today. Share the OTP sent to your number to keep it active.",scam,otp_request
+"Hi Vikram, are we still meeting for lunch on Sunday? Let me know what time works for you.",genuine,personal_message
+"Dear Kavita, your SBI credit card bill of Rs. 3,200 is due on 15th. Please pay before the due date to avoid late fee.",genuine,bank_alert_real
+Your order #45213 has been shipped and will arrive by Thursday. Track it in the app.,genuine,delivery_notification
+This is from the Income Tax Department. A case has been filed against you. Pay the pending fine today to avoid arrest.,scam,fake_authority
+"This is to confirm your fixed deposit of Rs. 9,999 has matured and been credited to your SBI savings account.",genuine,bank_alert_real
+the courier company attempted delivery today but failed. Click http://secure-bank-update.in to reschedule and pay the pending customs charge.,scam,courier_scam
+Your device has been hacked. Call our technical team immediately and share your screen to remove the malware.,scam,tech_support
+"Aapka SBI credit card bill Rs. 3,200 ka hai, 15 tarikh tak bhar dein.",genuine,bank_alert_real
+Aapka SBI account KYC na hone ki wajah se hold par hai. http://accountsafe-verify.com par turant update karein.,scam,fake_bank_kyc
+"You are selected as the winner of our anniversary lucky draw of Rs. 49,999. Pay a small processing fee to claim.",scam,lottery_prize
+"Aapka number lucky draw mein select hua hai, Rs. 25,000 jeetne ke liye thoda processing fee bhejein.",scam,lottery_prize
+"Just checking in, how are you feeling today? Let me know if you need anything.",genuine,personal_message
+यह आयकर विभाग है। आपके खिलाफ केस दर्ज हुआ है। गिरफ्तारी से बचने के लिए आज ही जुर्माना भरें।,scam,fake_authority
+Your Axis Bank account statement for last month is ready. Login to net banking to view or download it.,genuine,bank_alert_real
+This is SBI security team. We need the OTP you just received to verify a suspicious login.,scam,otp_request
+"Janamdin mubarak ho Kavita! Din bahut acha guzre, jab free ho tab call karna.",genuine,personal_message
+"Your mobile number has won Rs. 15,000 cash prize from a lucky number contest. Visit http://parcel-track-in.net within 24 hours to claim.",scam,lottery_prize
+"Grandpa it's me, I met with an accident and need money for the hospital right now, please don't tell anyone.",scam,family_emergency
+"दवा खाना मत भूलना, डॉक्टर ने कहा है यह जरूरी है।",genuine,personal_message
+BlueDart: Aapka package aaj 2 baje se 6 baje ke beech deliver hoga.,genuine,delivery_notification
+"Dear customer, your your bank KYC is expired. Update immediately at http://claim-prize-now.co or your account will be suspended in 24 hours.",scam,fake_bank_kyc
+Your HDFC Bank account is on hold due to incomplete KYC. Click http://secure-bank-update.in now to avoid permanent deactivation.,scam,fake_bank_kyc
+the courier company: Your package is out for delivery today between 2 PM and 6 PM.,genuine,delivery_notification
+"Dear Ramesh, your HDFC Bank credit card bill of Rs. 3,200 is due on 15th. Please pay before the due date to avoid late fee.",genuine,bank_alert_real
+"Hi Vikram, are we still meeting for lunch on Sunday? Let me know what time works for you.",genuine,personal_message
+"Dear winner, your lottery ticket has been selected for Rs. 25,000. Contact us urgently before the offer expires.",scam,lottery_prize
+This is TRAI. Your mobile number will be disconnected in 2 hours due to illegal activity. Press 1 to speak to an officer.,scam,fake_authority
+"Congratulations Sunita! You have won Rs. 15,000 in the lucky draw. Click http://bit.ly/verify-kyc to claim your prize now.",scam,lottery_prize
+"दवा खाना मत भूलना, डॉक्टर ने कहा है यह जरूरी है।",genuine,personal_message
+"दवा खाना मत भूलना, डॉक्टर ने कहा है यह जरूरी है।",genuine,personal_message
+आपका डिवाइस हैक हो गया है। तुरंत हमारी टीम को स्क्रीन शेयर करें मालवेयर हटाने के लिए।,scam,tech_support
+आपका डिवाइस हैक हो गया है। तुरंत हमारी टीम को स्क्रीन शेयर करें मालवेयर हटाने के लिए।,scam,tech_support
+"नमस्ते Rahul, क्या हम रविवार को लंच पर मिल रहे हैं? समय बताइए।",genuine,personal_message
+Warning: your bank app is compromised. Download this tool and install it to secure your device right away.,scam,tech_support
+Aapka ATM card band ho gaya hai. Turant OTP batao card dobara chalu karne ke liye.,scam,otp_request
+आपका पार्सल पता अधूरा होने के कारण डिलीवर नहीं हो सका। http://claim-prize-now.co पर विवरण की पुष्टि करें।,scam,courier_scam
+"This is to confirm your fixed deposit of Rs. 15,000 has matured and been credited to your ICICI Bank savings account.",genuine,bank_alert_real
+the courier company: Aapka parcel customs mein ruka hua hai. Turant http://bit.ly/verify-kyc par fee bharke release karayein.,scam,courier_scam
+URGENT: Your ATM card is deactivated. Call us and provide the OTP to reactivate immediately.,scam,otp_request
+the courier company: Your parcel is held at customs. Pay a small fee at http://bit.ly/verify-kyc to release it immediately or it will be returned.,scam,courier_scam
+"Police department se call hai, aapke Aadhaar ka misuse crime mein hua hai, turant call back karein.",scam,fake_authority
+आपका पार्सल पता अधूरा होने के कारण डिलीवर नहीं हो सका। http://claim-prize-now.co पर विवरण की पुष्टि करें।,scam,courier_scam
+"Don't forget to take your medicine after dinner tonight, doctor said it's important.",genuine,personal_message
+Get 20% off on your next grocery order this weekend. Use code SAVE20 at checkout.,genuine,promotion_genuine
+the courier company: Your package is out for delivery today between 2 PM and 6 PM.,genuine,delivery_notification
+"Aapke computer mein virus aaya hai, hum Microsoft support se hain, remote access dijiye theek karne ke liye.",scam,tech_support
+यह आयकर विभाग है। आपके खिलाफ केस दर्ज हुआ है। गिरफ्तारी से बचने के लिए आज ही जुर्माना भरें।,scam,fake_authority
+"Your electricity connection will be cut off tonight due to unpaid bill. Pay Rs. 25,000 immediately at http://parcel-track-in.net to avoid disconnection.",scam,fake_authority
+आपका डिवाइस हैक हो गया है। तुरंत हमारी टीम को स्क्रीन शेयर करें मालवेयर हटाने के लिए।,scam,tech_support
+"प्रिय Sunita, आपके ICICI Bank खाते से UPI भुगतान के लिए Rs. 2,500 डेबिट हुए। शेष राशि Rs. 18,400. यह आप नहीं थे? 1800-XXX पर कॉल करें।",genuine,bank_alert_real
+"प्रिय ग्राहक, आपका SBI खाता आज ब्लॉक हो जाएगा। खाता चालू रखने के लिए OTP शेयर करें।",scam,otp_request
+"Just checking in, how are you feeling today? Let me know if you need anything.",genuine,personal_message
+Your loyalty points are about to expire. Redeem them on your next purchase this month.,genuine,promotion_genuine
+"This is to confirm your fixed deposit of Rs. 15,000 has matured and been credited to your PNB savings account.",genuine,bank_alert_real
+Your order #45213 has been shipped and will arrive by Thursday. Track it in the app.,genuine,delivery_notification
+"प्रिय Meena, आपके your bank खाते से UPI भुगतान के लिए Rs. 2,500 डेबिट हुए। शेष राशि Rs. 18,400. यह आप नहीं थे? 1800-XXX पर कॉल करें।",genuine,bank_alert_real
+the courier company attempted delivery today but failed. Click http://bit.ly/verify-kyc to reschedule and pay the pending customs charge.,scam,courier_scam
+This is from the Income Tax Department. A case has been filed against you. Pay the pending fine today to avoid arrest.,scam,fake_authority
+आपका ऑर्डर #45213 भेज दिया गया है और गुरुवार तक पहुंच जाएगा।,genuine,delivery_notification
+This is from the Income Tax Department. A case has been filed against you. Pay the pending fine today to avoid arrest.,scam,fake_authority
+आपका HDFC Bank KYC एक्सपायर हो गया है। http://accountsafe-verify.com पर तुरंत अपडेट करें वरना खाता बंद हो जाएगा।,scam,fake_bank_kyc
+"Dear Anil, your PNB credit card bill of Rs. 3,200 is due on 15th. Please pay before the due date to avoid late fee.",genuine,bank_alert_real
+"Congratulations Rahul! You have won Rs. 9,999 in the lucky draw. Click http://accountsafe-verify.com to claim your prize now.",scam,lottery_prize
+"Aapka HDFC Bank credit card bill Rs. 3,200 ka hai, 15 tarikh tak bhar dein.",genuine,bank_alert_real
+"Aapke computer mein virus aaya hai, hum Microsoft support se hain, remote access dijiye theek karne ke liye.",scam,tech_support
+"Police department se call hai, aapke Aadhaar ka misuse crime mein hua hai, turant call back karein.",scam,fake_authority
+"Don't forget to take your medicine after dinner tonight, doctor said it's important.",genuine,personal_message
+"Just checking in, how are you feeling today? Let me know if you need anything.",genuine,personal_message
+"प्रिय ग्राहक, आपका HDFC Bank खाता आज ब्लॉक हो जाएगा। खाता चालू रखने के लिए OTP शेयर करें।",scam,otp_request
+"You are selected as the winner of our anniversary lucky draw of Rs. 15,000. Pay a small processing fee to claim.",scam,lottery_prize
+यह आयकर विभाग है। आपके खिलाफ केस दर्ज हुआ है। गिरफ्तारी से बचने के लिए आज ही जुर्माना भरें।,scam,fake_authority
+"Your electricity connection will be cut off tonight due to unpaid bill. Pay Rs. 15,000 immediately at http://bit.ly/verify-kyc to avoid disconnection.",scam,fake_authority
+"Aapka number lucky draw mein select hua hai, Rs. 15,000 jeetne ke liye thoda processing fee bhejein.",scam,lottery_prize
+"Janamdin mubarak ho Vikram! Din bahut acha guzre, jab free ho tab call karna.",genuine,personal_message
+This is Microsoft support. We detected a virus on your computer. Please give us remote access to fix it now.,scam,tech_support
+"Just checking in, how are you feeling today? Let me know if you need anything.",genuine,personal_message
+आपका ICICI Bank KYC एक्सपायर हो गया है। http://parcel-track-in.net पर तुरंत अपडेट करें वरना खाता बंद हो जाएगा।,scam,fake_bank_kyc
+"This is to confirm your fixed deposit of Rs. 25,000 has matured and been credited to your ICICI Bank savings account.",genuine,bank_alert_real
+"Dear Priya, your ICICI Bank credit card bill of Rs. 3,200 is due on 15th. Please pay before the due date to avoid late fee.",genuine,bank_alert_real
+"Hi Kavita, are we still meeting for lunch on Sunday? Let me know what time works for you.",genuine,personal_message
+the courier company attempted delivery today but failed. Click http://parcel-track-in.net to reschedule and pay the pending customs charge.,scam,courier_scam
+Aapka ATM card band ho gaya hai. Turant OTP batao card dobara chalu karne ke liye.,scam,otp_request
+482913 is your one time password for the transaction. Never share your OTP with anyone for any reason.,genuine,otp_genuine_context
+"Happy birthday Suresh! Hope you have a wonderful day, call me when you're free.",genuine,personal_message
+"Dear Ramesh, Rs. 2,500 debited from your PNB account for UPI payment. Available balance Rs. 18,400. Not you? Call 1800-XXX customer care.",genuine,bank_alert_real
+Your device has been hacked. Call our technical team immediately and share your screen to remove the malware.,scam,tech_support
+India Post: Aapka parcel customs mein ruka hua hai. Turant http://accountsafe-verify.com par fee bharke release karayein.,scam,courier_scam
+आपका पार्सल पता अधूरा होने के कारण डिलीवर नहीं हो सका। http://accountsafe-verify.com पर विवरण की पुष्टि करें।,scam,courier_scam
+Your PNB account is on hold due to incomplete KYC. Click http://parcel-track-in.net now to avoid permanent deactivation.,scam,fake_bank_kyc
+"Happy birthday Geeta! Hope you have a wonderful day, call me when you're free.",genuine,personal_message
+आपका पार्सल पता अधूरा होने के कारण डिलीवर नहीं हो सका। http://parcel-track-in.net पर विवरण की पुष्टि करें।,scam,courier_scam
+Your order has been delivered. Thank you for shopping with us. Rate your experience in the app.,genuine,delivery_notification
+Your device has been hacked. Call our technical team immediately and share your screen to remove the malware.,scam,tech_support
+Your order has been delivered. Thank you for shopping with us. Rate your experience in the app.,genuine,delivery_notification
+India Post: Your parcel is held at customs. Pay a small fee at http://bit.ly/verify-kyc to release it immediately or it will be returned.,scam,courier_scam
+India Post: Aapka package aaj 2 baje se 6 baje ke beech deliver hoga.,genuine,delivery_notification
+आपका ऑर्डर #45213 भेज दिया गया है और गुरुवार तक पहुंच जाएगा।,genuine,delivery_notification
+This is a reminder that your electricity meter reading is scheduled for next Monday.,genuine,appointment_reminder
+URGENT: Your ATM card is deactivated. Call us and provide the OTP to reactivate immediately.,scam,otp_request
+आपका ऑर्डर #45213 भेज दिया गया है और गुरुवार तक पहुंच जाएगा।,genuine,delivery_notification
+Aapka SBI account KYC na hone ki wajah se hold par hai. http://accountsafe-verify.com par turant update karein.,scam,fake_bank_kyc
+This is ICICI Bank security team. We need the OTP you just received to verify a suspicious login.,scam,otp_request
+This is from the Income Tax Department. A case has been filed against you. Pay the pending fine today to avoid arrest.,scam,fake_authority
+the courier company: Your parcel is held at customs. Pay a small fee at http://bit.ly/verify-kyc to release it immediately or it will be returned.,scam,courier_scam
+482913 is your one time password for the transaction. Never share your OTP with anyone for any reason.,genuine,otp_genuine_context
+Your loyalty points are about to expire. Redeem them on your next purchase this month.,genuine,promotion_genuine
+Delhivery attempted delivery today but failed. Click http://claim-prize-now.co to reschedule and pay the pending customs charge.,scam,courier_scam
+"Happy birthday Kavita! Hope you have a wonderful day, call me when you're free.",genuine,personal_message
+"Mummy mera phone kho gaya hai, yeh friend ka number hai, mujhe turant Rs. 49,999 bhejo, kisi ko mat batana.",scam,family_emergency
+We are calling from your internet provider. Your connection will be suspended unless you verify your account PIN.,scam,tech_support
+"दादाजी मेरा एक्सीडेंट हो गया है, अस्पताल के लिए तुरंत पैसे भेजो, यह मेरा नया नंबर है।",scam,family_emergency
+FedEx: Aapka parcel customs mein ruka hua hai. Turant http://accountsafe-verify.com par fee bharke release karayein.,scam,courier_scam
+This is Axis Bank security team. We need the OTP you just received to verify a suspicious login.,scam,otp_request
+482913 aapka one time password hai transaction ke liye. Kisi ke saath bhi share mat karein.,genuine,otp_genuine_context
+Your order has been delivered. Thank you for shopping with us. Rate your experience in the app.,genuine,delivery_notification
+"You are selected as the winner of our anniversary lucky draw of Rs. 25,000. Pay a small processing fee to claim.",scam,lottery_prize
+Your PNB account statement for last month is ready. Login to net banking to view or download it.,genuine,bank_alert_real
+"Your OTP for login is 482913. Do not share this OTP with anyone, including bank staff. Valid for 10 minutes.",genuine,otp_genuine_context
+URGENT: Your ATM card is deactivated. Call us and provide the OTP to reactivate immediately.,scam,otp_request
+"Happy birthday Meena! Hope you have a wonderful day, call me when you're free.",genuine,personal_message
+FedEx: Aapka parcel customs mein ruka hua hai. Turant http://claim-prize-now.co par fee bharke release karayein.,scam,courier_scam
+आपका your bank KYC एक्सपायर हो गया है। http://claim-prize-now.co पर तुरंत अपडेट करें वरना खाता बंद हो जाएगा।,scam,fake_bank_kyc
+"Just checking in, how are you feeling today? Let me know if you need anything.",genuine,personal_message
+"प्रिय ग्राहक, आपका your bank खाता आज ब्लॉक हो जाएगा। खाता चालू रखने के लिए OTP शेयर करें।",scam,otp_request
+"Aapke computer mein virus aaya hai, hum Microsoft support se hain, remote access dijiye theek karne ke liye.",scam,tech_support
+Get 20% off on your next grocery order this weekend. Use code SAVE20 at checkout.,genuine,promotion_genuine
+Your PNB account statement for last month is ready. Login to net banking to view or download it.,genuine,bank_alert_real
+FINAL NOTICE: Aapka net banking kal se band ho jayega. PAN Aadhaar verify karein http://accountsafe-verify.com par.,scam,fake_bank_kyc
+"Grandpa it's me, I met with an accident and need money for the hospital right now, please don't tell anyone.",scam,family_emergency
+आपका डिवाइस हैक हो गया है। तुरंत हमारी टीम को स्क्रीन शेयर करें मालवेयर हटाने के लिए।,scam,tech_support
+Your package could not be delivered due to incomplete address. Confirm your details and pay Rs. 50 at http://secure-bank-update.in.,scam,courier_scam
+"दवा खाना मत भूलना, डॉक्टर ने कहा है यह जरूरी है।",genuine,personal_message
+"Aapka number lucky draw mein select hua hai, Rs. 25,000 jeetne ke liye thoda processing fee bhejein.",scam,lottery_prize
+Delhivery: Aapka package aaj 2 baje se 6 baje ke beech deliver hoga.,genuine,delivery_notification
+"Dear winner, your lottery ticket has been selected for Rs. 49,999. Contact us urgently before the offer expires.",scam,lottery_prize
+आपका ऑर्डर #45213 भेज दिया गया है और गुरुवार तक पहुंच जाएगा।,genuine,delivery_notification
+"बधाई हो Vikram जी! आपने लकी ड्रा में Rs. 1,00,000 जीता है। अभी http://claim-prize-now.co पर क्लिक करके क्लेम करें।",scam,lottery_prize
+the courier company: Your parcel is held at customs. Pay a small fee at http://secure-bank-update.in to release it immediately or it will be returned.,scam,courier_scam
+Your gas cylinder booking is confirmed. Delivery expected within 2 days.,genuine,appointment_reminder
+Your loyalty points are about to expire. Redeem them on your next purchase this month.,genuine,promotion_genuine
+"Happy birthday Sunita! Hope you have a wonderful day, call me when you're free.",genuine,personal_message
+Your ICICI Bank account statement for last month is ready. Login to net banking to view or download it.,genuine,bank_alert_real
+"Dear winner, your lottery ticket has been selected for Rs. 15,000. Contact us urgently before the offer expires.",scam,lottery_prize
+Your account has unusual activity. Please tell us the 6 digit code sent to your phone to secure it now.,scam,otp_request
+"Mummy mera phone kho gaya hai, yeh friend ka number hai, mujhe turant Rs. 49,999 bhejo, kisi ko mat batana.",scam,family_emergency
+Your account has unusual activity. Please tell us the 6 digit code sent to your phone to secure it now.,scam,otp_request
+"Don't forget to take your medicine after dinner tonight, doctor said it's important.",genuine,personal_message
+"Mummy mera phone kho gaya hai, yeh friend ka number hai, mujhe turant Rs. 25,000 bhejo, kisi ko mat batana.",scam,family_emergency
+Get 20% off on your next grocery order this weekend. Use code SAVE20 at checkout.,genuine,promotion_genuine
+"बधाई हो Sunita जी! आपने लकी ड्रा में Rs. 49,999 जीता है। अभी http://accountsafe-verify.com पर क्लिक करके क्लेम करें।",scam,lottery_prize
+This is Microsoft support. We detected a virus on your computer. Please give us remote access to fix it now.,scam,tech_support
+the courier company: Your parcel is held at customs. Pay a small fee at http://secure-bank-update.in to release it immediately or it will be returned.,scam,courier_scam
+"Mummy mera phone kho gaya hai, yeh friend ka number hai, mujhe turant Rs. 49,999 bhejo, kisi ko mat batana.",scam,family_emergency
+Yeh ICICI Bank security team hai. Aapke number par aaya OTP hume turant batayein.,scam,otp_request
+Your PNB account statement for last month is ready. Login to net banking to view or download it.,genuine,bank_alert_real
+"Your OTP for login is 482913. Do not share this OTP with anyone, including bank staff. Valid for 10 minutes.",genuine,otp_genuine_context
+"आपका OTP 482913 है। इसे किसी के साथ साझा न करें, बैंक कर्मचारी के साथ भी नहीं। यह 10 मिनट के लिए मान्य है।",genuine,otp_genuine_context
+"नमस्ते Anil, क्या हम रविवार को लंच पर मिल रहे हैं? समय बताइए।",genuine,personal_message
+"Your mobile number has won Rs. 1,00,000 cash prize from a lucky number contest. Visit http://claim-prize-now.co within 24 hours to claim.",scam,lottery_prize
+"Your mobile number has won Rs. 15,000 cash prize from a lucky number contest. Visit http://secure-bank-update.in within 24 hours to claim.",scam,lottery_prize
+"Aapka number lucky draw mein select hua hai, Rs. 1,00,000 jeetne ke liye thoda processing fee bhejein.",scam,lottery_prize
+Delhivery: Aapka parcel customs mein ruka hua hai. Turant http://accountsafe-verify.com par fee bharke release karayein.,scam,courier_scam
+"Your electricity connection will be cut off tonight due to unpaid bill. Pay Rs. 49,999 immediately at http://claim-prize-now.co to avoid disconnection.",scam,fake_authority
+Aapka ATM card band ho gaya hai. Turant OTP batao card dobara chalu karne ke liye.,scam,otp_request
+"Janamdin mubarak ho Vikram! Din bahut acha guzre, jab free ho tab call karna.",genuine,personal_message
+"आपका OTP 482913 है। इसे किसी के साथ साझा न करें, बैंक कर्मचारी के साथ भी नहीं। यह 10 मिनट के लिए मान्य है।",genuine,otp_genuine_context
+482913 is your one time password for the transaction. Never share your OTP with anyone for any reason.,genuine,otp_genuine_context
+IMPORTANT: your bank - Your net banking will stop working from tomorrow. Verify your PAN and Aadhaar at http://accountsafe-verify.com today.,scam,fake_bank_kyc
+"Mom I lost my phone, this is my friend's number. I'm in trouble and need Rs. 49,999 urgently, please send it now.",scam,family_emergency
+Yeh PNB security team hai. Aapke number par aaya OTP hume turant batayein.,scam,otp_request
+"This is to confirm your fixed deposit of Rs. 49,999 has matured and been credited to your PNB savings account.",genuine,bank_alert_real
+This is Microsoft support. We detected a virus on your computer. Please give us remote access to fix it now.,scam,tech_support
+"दवा खाना मत भूलना, डॉक्टर ने कहा है यह जरूरी है।",genuine,personal_message
+आपका Axis Bank KYC एक्सपायर हो गया है। http://claim-prize-now.co पर तुरंत अपडेट करें वरना खाता बंद हो जाएगा।,scam,fake_bank_kyc
+"Dear customer, your PNB KYC is expired. Update immediately at http://parcel-track-in.net or your account will be suspended in 24 hours.",scam,fake_bank_kyc
+India Post: Your package is out for delivery today between 2 PM and 6 PM.,genuine,delivery_notification
+Your account has unusual activity. Please tell us the 6 digit code sent to your phone to secure it now.,scam,otp_request
+"दादाजी मेरा एक्सीडेंट हो गया है, अस्पताल के लिए तुरंत पैसे भेजो, यह मेरा नया नंबर है।",scam,family_emergency
+the courier company: Your package is out for delivery today between 2 PM and 6 PM.,genuine,delivery_notification
+"Your OTP for login is 482913. Do not share this OTP with anyone, including bank staff. Valid for 10 minutes.",genuine,otp_genuine_context
+This is TRAI. Your mobile number will be disconnected in 2 hours due to illegal activity. Press 1 to speak to an officer.,scam,fake_authority
+"Dear winner, your lottery ticket has been selected for Rs. 1,00,000. Contact us urgently before the offer expires.",scam,lottery_prize
+Reminder: Your appointment with Dr. Sharma is scheduled tomorrow at 10 AM at City Hospital.,genuine,appointment_reminder
+"You are selected as the winner of our anniversary lucky draw of Rs. 1,00,000. Pay a small processing fee to claim.",scam,lottery_prize
+"Dear Suresh, your HDFC Bank account will be blocked today. Share the OTP sent to your number to keep it active.",scam,otp_request
+"प्रिय ग्राहक, आपका SBI खाता आज ब्लॉक हो जाएगा। खाता चालू रखने के लिए OTP शेयर करें।",scam,otp_request
+"Mom I lost my phone, this is my friend's number. I'm in trouble and need Rs. 9,999 urgently, please send it now.",scam,family_emergency
+"Happy birthday Suresh! Hope you have a wonderful day, call me when you're free.",genuine,personal_message
+यह आयकर विभाग है। आपके खिलाफ केस दर्ज हुआ है। गिरफ्तारी से बचने के लिए आज ही जुर्माना भरें।,scam,fake_authority
+"Aapke computer mein virus aaya hai, hum Microsoft support se hain, remote access dijiye theek karne ke liye.",scam,tech_support
+FINAL NOTICE: Aapka net banking kal se band ho jayega. PAN Aadhaar verify karein http://accountsafe-verify.com par.,scam,fake_bank_kyc
+"Don't forget to take your medicine after dinner tonight, doctor said it's important.",genuine,personal_message
+"Mom I lost my phone, this is my friend's number. I'm in trouble and need Rs. 25,000 urgently, please send it now.",scam,family_emergency
+"नमस्ते Rahul, क्या हम रविवार को लंच पर मिल रहे हैं? समय बताइए।",genuine,personal_message
+"Dear customer, your your bank KYC is expired. Update immediately at http://bit.ly/verify-kyc or your account will be suspended in 24 hours.",scam,fake_bank_kyc
+"This is to confirm your fixed deposit of Rs. 49,999 has matured and been credited to your Axis Bank savings account.",genuine,bank_alert_real
+Aapka your bank account KYC na hone ki wajah se hold par hai. http://secure-bank-update.in par turant update karein.,scam,fake_bank_kyc
+Warning: your bank app is compromised. Download this tool and install it to secure your device right away.,scam,tech_support
+"Janamdin mubarak ho Vikram! Din bahut acha guzre, jab free ho tab call karna.",genuine,personal_message
+"Hi Kavita, are we still meeting for lunch on Sunday? Let me know what time works for you.",genuine,personal_message
+Get 20% off on your next grocery order this weekend. Use code SAVE20 at checkout.,genuine,promotion_genuine
+Your order #45213 has been shipped and will arrive by Thursday. Track it in the app.,genuine,delivery_notification
+This is a final notice from your bank. Your account access will be blocked unless you update KYC here: http://accountsafe-verify.com,scam,fake_bank_kyc
+URGENT: Your ATM card is deactivated. Call us and provide the OTP to reactivate immediately.,scam,otp_request
+"Don't forget to take your medicine after dinner tonight, doctor said it's important.",genuine,personal_message
+"Hi it's your son, I'm stuck at the airport and my card isn't working, can you transfer Rs. 15,000 to this number quickly.",scam,family_emergency
+आपका ऑर्डर #45213 भेज दिया गया है और गुरुवार तक पहुंच जाएगा।,genuine,delivery_notification
+"Hi Anil, are we still meeting for lunch on Sunday? Let me know what time works for you.",genuine,personal_message
+"दवा खाना मत भूलना, डॉक्टर ने कहा है यह जरूरी है।",genuine,personal_message
+"Don't forget to take your medicine after dinner tonight, doctor said it's important.",genuine,personal_message
+the courier company: Aapka package aaj 2 baje se 6 baje ke beech deliver hoga.,genuine,delivery_notification
+आपका ऑर्डर #45213 भेज दिया गया है और गुरुवार तक पहुंच जाएगा।,genuine,delivery_notification
+This is Microsoft support. We detected a virus on your computer. Please give us remote access to fix it now.,scam,tech_support
+"Hi it's your son, I'm stuck at the airport and my card isn't working, can you transfer Rs. 25,000 to this number quickly.",scam,family_emergency
+"प्रिय Meena, आपके HDFC Bank खाते से UPI भुगतान के लिए Rs. 2,500 डेबिट हुए। शेष राशि Rs. 18,400. यह आप नहीं थे? 1800-XXX पर कॉल करें।",genuine,bank_alert_real
+Aapka Axis Bank account KYC na hone ki wajah se hold par hai. http://accountsafe-verify.com par turant update karein.,scam,fake_bank_kyc
+"Dear Geeta, Rs. 2,500 debited from your ICICI Bank account for UPI payment. Available balance Rs. 18,400. Not you? Call 1800-XXX customer care.",genuine,bank_alert_real
+Your package could not be delivered due to incomplete address. Confirm your details and pay Rs. 50 at http://claim-prize-now.co.,scam,courier_scam
+Police department notice: your Aadhaar has been used in a crime. Call this number immediately to avoid legal action.,scam,fake_authority
+Your order has been delivered. Thank you for shopping with us. Rate your experience in the app.,genuine,delivery_notification
+"Aapka number lucky draw mein select hua hai, Rs. 15,000 jeetne ke liye thoda processing fee bhejein.",scam,lottery_prize
+482913 is your one time password for the transaction. Never share your OTP with anyone for any reason.,genuine,otp_genuine_context
+"Mom I lost my phone, this is my friend's number. I'm in trouble and need Rs. 15,000 urgently, please send it now.",scam,family_emergency
+"Dear customer, your Axis Bank KYC is expired. Update immediately at http://parcel-track-in.net or your account will be suspended in 24 hours.",scam,fake_bank_kyc
+"Congratulations Priya! You have won Rs. 15,000 in the lucky draw. Click http://secure-bank-update.in to claim your prize now.",scam,lottery_prize
+BlueDart: Your parcel is held at customs. Pay a small fee at http://claim-prize-now.co to release it immediately or it will be returned.,scam,courier_scam
+Police department notice: your Aadhaar has been used in a crime. Call this number immediately to avoid legal action.,scam,fake_authority
+Your gas cylinder booking is confirmed. Delivery expected within 2 days.,genuine,appointment_reminder
+This is TRAI. Your mobile number will be disconnected in 2 hours due to illegal activity. Press 1 to speak to an officer.,scam,fake_authority
+"Your mobile number has won Rs. 15,000 cash prize from a lucky number contest. Visit http://accountsafe-verify.com within 24 hours to claim.",scam,lottery_prize
+"Hi Anil, are we still meeting for lunch on Sunday? Let me know what time works for you.",genuine,personal_message
+This is from the Income Tax Department. A case has been filed against you. Pay the pending fine today to avoid arrest.,scam,fake_authority
+"Dear Meena, Rs. 2,500 debited from your HDFC Bank account for UPI payment. Available balance Rs. 18,400. Not you? Call 1800-XXX customer care.",genuine,bank_alert_real
+"You are selected as the winner of our anniversary lucky draw of Rs. 9,999. Pay a small processing fee to claim.",scam,lottery_prize
+Yeh your bank security team hai. Aapke number par aaya OTP hume turant batayein.,scam,otp_request
+Get 20% off on your next grocery order this weekend. Use code SAVE20 at checkout.,genuine,promotion_genuine
+"Your OTP for login is 482913. Do not share this OTP with anyone, including bank staff. Valid for 10 minutes.",genuine,otp_genuine_context
+482913 aapka one time password hai transaction ke liye. Kisi ke saath bhi share mat karein.,genuine,otp_genuine_context

@@ -1,0 +1,24 @@
+Flask
+scikit-learn
+pandas
+numpy
+joblib
+
+# OCR
+
+pytesseract
+Pillow
+
+# Voice Input
+
+SpeechRecognition
+
+# HTTP / URL Analysis
+
+requests
+
+# Production Server
+
+gunicorn
+Werkzeug
+
