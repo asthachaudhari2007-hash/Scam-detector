@@ -1,5 +1,17 @@
 # -*- coding: utf-8 -*-
+"""
+Digital Sathi / SafeSathi — Flask backend.
 
+This module implements the scam-detection pipeline used by the app:
+  1. Accept a pasted message, a described call, or a screenshot (OCR).
+  2. Run the text through an ML classifier (`classify`) that combines
+     a trained model, tactic-keyword matching, urgency detection, and
+     link-risk analysis.
+  3. Return a bilingual (English/Hindi) verdict with reasons, tips,
+     and a recommended action.
+"""
+
+import logging
 import pickle
 import re
 
@@ -12,10 +24,34 @@ from scanner.ocr import extract_text_from_image
 
 
 # ============================================================
+# LOGGING
+# ============================================================
+# Structured logging replaces the old print()-based debugging so
+# behaviour is consistent whether the app runs locally or is
+# deployed (e.g. on Render), and so log levels can be filtered.
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+logger = logging.getLogger("digital_sathi")
+
+
+# ============================================================
 # FLASK APP
 # ============================================================
 
 app = Flask(__name__)
+
+
+# ============================================================
+# SHARED CONSTANTS
+# ============================================================
+
+# Maximum characters accepted for any single classification request
+# (pasted text, call notes, or OCR-extracted text). Centralized here
+# instead of repeating the literal `3000` at each call site.
+MAX_TEXT_LENGTH = 3000
 
 
 # ============================================================
@@ -34,23 +70,18 @@ try:
     with open(VECTORIZER_PATH, "rb") as f:
         vectorizer = pickle.load(f)
 
-    print("========================================")
-    print("ML MODEL LOADED SUCCESSFULLY")
-    print("========================================")
-    print("Model classes:", clf.classes_)
-    print("========================================")
+    logger.info("ML MODEL LOADED SUCCESSFULLY")
+    logger.info("Model classes: %s", clf.classes_)
 
-except Exception as e:
+except Exception:
 
-    print("========================================")
-    print("ERROR LOADING MODEL")
-    print("========================================")
-    print(e)
-    print("========================================")
+    logger.exception("ERROR LOADING MODEL")
 
     clf = None
     vectorizer = None
-    # ============================================================
+
+
+# ============================================================
 # SCAM TACTIC INFORMATION
 # ============================================================
 
@@ -323,6 +354,7 @@ TACTIC_INFO = {
         ]
     }
 }
+
 # ============================================================
 # HINDI TRANSLATIONS — tactic labels, general tips, and
 # action text, so the analysis can be shown/spoken in
@@ -386,6 +418,7 @@ DEFAULT_REASON_HI = (
     "कोई मजबूत धोखाधड़ी संकेत नहीं मिला, लेकिन अनपेक्षित संदेशों "
     "की फिर भी पुष्टि की जानी चाहिए।"
 )
+
 # ============================================================
 # CALL CHECKER — maps each checkbox option to a descriptive
 # sentence, so a selected-checkbox call description can be run
@@ -431,6 +464,7 @@ CALL_OPTION_LABELS_HI = {
     "prize_lottery": "इनाम/लॉटरी",
     "other": "कुछ और",
 }
+
 # ============================================================
 # URGENCY DETECTION
 # ============================================================
@@ -545,21 +579,41 @@ DANGEROUS_FILE_EXTENSIONS = [
 ]
 
 
-def extract_links(text):
+def extract_links(text: str) -> list:
+    """Return every http(s):// or www. link found in `text`, in order."""
 
     return URL_PATTERN.findall(text)
 
 
-def _normalize_for_parsing(link):
+def _normalize_for_parsing(link: str) -> str:
+    """Prefix a bare `www.` link with a scheme so `urlparse` can split
+    host from path correctly. `urlparse` needs a scheme to correctly
+    split host from path.
+    """
 
-    # urlparse needs a scheme to correctly split host from path.
     if link.lower().startswith("www."):
         return "http://" + link
 
     return link
 
 
-def check_link_risk(text, lang="en"):
+def check_link_risk(text: str, lang: str = "en") -> dict:
+    """Scan every link in `text` for phishing/scam red flags.
+
+    Checks include: '@' tricks, missing HTTPS, suspicious keywords in
+    the URL, raw-IP hosts, URL shorteners, punycode domains, risky
+    TLDs, brand impersonation, excessive subdomains, non-standard
+    ports, and dangerous file extensions.
+
+    Args:
+        text: The message text to scan for links.
+        lang: Output language for the returned reason strings
+            ("en" or "hi").
+
+    Returns:
+        A dict with keys `has_link` (bool), `risk`
+        ("none"/"low"/"medium"/"high"), and `reasons` (list[str]).
+    """
 
     links = extract_links(text)
 
@@ -876,14 +930,24 @@ def check_link_risk(text, lang="en"):
         "risk": risk,
         "reasons": all_reasons
     }
-    # ============================================================
+
+
+# ============================================================
 # LANGUAGE DETECTION
 # (this detects the LANGUAGE OF THE MESSAGE ITSELF — separate
 # from the `lang` parameter below, which controls what language
 # the ANALYSIS/OUTPUT is shown in)
 # ============================================================
 
-def detect_language(text):
+def detect_language(text: str) -> str:
+    """Guess whether `text` is Hindi/Hinglish or English.
+
+    Uses Devanagari character counting first, then falls back to a
+    small Hinglish word-list heuristic.
+
+    Returns:
+        "hi" if Hindi/Hinglish is detected, otherwise "en".
+    """
 
     # --------------------------------------------------------
     # Hindi / Devanagari detection
@@ -950,7 +1014,10 @@ def detect_language(text):
 # TACTIC MATCHING
 # ============================================================
 
-def find_matched_tactics(text):
+def find_matched_tactics(text: str) -> list:
+    """Return every scam tactic in `TACTIC_INFO` whose keywords
+    appear in `text`, along with which phrases matched (max 4 each).
+    """
 
     text_lower = text.lower()
 
@@ -974,6 +1041,8 @@ def find_matched_tactics(text):
             })
 
     return matches
+
+
 # ============================================================
 # MAIN CLASSIFICATION FUNCTION
 #
@@ -983,7 +1052,29 @@ def find_matched_tactics(text):
 # MESSAGE the user submitted.
 # ============================================================
 
-def classify(text, lang="en"):
+def classify(text: str, lang: str = "en") -> dict:
+    """Run the full scam-detection pipeline on `text`.
+
+    Combines the trained ML classifier's scam probability, matched
+    scam tactics (keyword-based), urgency-language detection, and
+    link-risk analysis into one bilingual verdict.
+
+    Args:
+        text: The message, call description, or OCR-extracted text
+            to analyze. Trimmed and validated as non-empty.
+        lang: Output language for reasons/tips/action text
+            ("en" or "hi"); anything else falls back to "en".
+
+    Returns:
+        A dict with the verdict, risk level, scam probability,
+        matched tactics, reasons, safety tips, recommended action,
+        link analysis, and a disclaimer — see the return statement
+        at the end of this function for the full shape.
+
+    Raises:
+        RuntimeError: If the ML model/vectorizer failed to load.
+        ValueError: If `text` is empty after stripping.
+    """
 
     # --------------------------------------------------------
     # Check model
@@ -1124,8 +1215,6 @@ def classify(text, lang="en"):
 
         level = "high"
 
-        verdict = "Likely Scam"
-
         verdict_en = "Likely Scam"
 
         verdict_hi = "संभावित स्कैम"
@@ -1134,8 +1223,6 @@ def classify(text, lang="en"):
 
         level = "medium"
 
-        verdict = "Suspicious"
-
         verdict_en = "Suspicious"
 
         verdict_hi = "संदिग्ध"
@@ -1143,8 +1230,6 @@ def classify(text, lang="en"):
     else:
 
         level = "low"
-
-        verdict = "Looks Safe"
 
         verdict_en = "Looks Safe"
 
@@ -1461,12 +1546,34 @@ def classify(text, lang="en"):
 
         "disclaimer": disclaimer
     }
-    # ============================================================
+
+
+# ============================================================
+# HEALTH CHECK
+# ============================================================
+
+@app.route("/health")
+def health():
+    """Lightweight liveness/readiness check for monitoring and for
+    hosts (e.g. Render) that ping the app to keep it awake.
+
+    Returns whether the ML model is loaded, since the app can start
+    even if the model failed to load (see LOAD TRAINED MODEL above).
+    """
+
+    return jsonify({
+        "status": "ok",
+        "model_loaded": clf is not None and vectorizer is not None,
+    })
+
+
+# ============================================================
 # HOME PAGE
 # ============================================================
 
 @app.route("/")
 def index():
+    """Serve the single-page frontend (templates/index.html)."""
 
     return render_template(
         "index.html"
@@ -1479,6 +1586,11 @@ def index():
 
 @app.route("/check", methods=["POST"])
 def check():
+    """Classify a pasted message or link.
+
+    Expects JSON body: {"text": str, "lang": "en"|"hi"}.
+    Returns the `classify()` result as JSON, or a 400/500 error.
+    """
 
     try:
 
@@ -1535,7 +1647,7 @@ def check():
         # Limit text
         # ----------------------------------------------------
 
-        text = text[:3000]
+        text = text[:MAX_TEXT_LENGTH]
 
 
         # ----------------------------------------------------
@@ -1554,13 +1666,7 @@ def check():
 
     except Exception as e:
 
-        print("\n========================================")
-        print("CLASSIFICATION ERROR")
-        print("========================================")
-        print("Error type:", type(e).__name__)
-        print("Error:", str(e))
-        print("========================================\n")
-
+        logger.exception("CLASSIFICATION ERROR")
 
         return jsonify({
 
@@ -1572,12 +1678,23 @@ def check():
             "error_type": type(e).__name__
 
         }), 500
-        # ============================================================
+
+
+# ============================================================
 # CALL SCAM CHECKER API
 # ============================================================
 
 @app.route("/check-call", methods=["POST"])
 def check_call():
+    """Classify a described phone call from selected checkbox
+    options plus optional free-text notes.
+
+    Expects JSON body: {"options": list[str], "notes": str,
+    "lang": "en"|"hi"}. The checkboxes are converted into an
+    English synthetic sentence (since the model/keywords are
+    English-first) and run through the same `classify()` pipeline
+    used for pasted messages.
+    """
 
     try:
 
@@ -1662,7 +1779,7 @@ def check_call():
         # Limit text
         # ----------------------------------------------------
 
-        combined_text = combined_text[:3000]
+        combined_text = combined_text[:MAX_TEXT_LENGTH]
 
 
         # ----------------------------------------------------
@@ -1697,13 +1814,7 @@ def check_call():
 
     except Exception as e:
 
-        print("\n========================================")
-        print("CALL CHECK ERROR")
-        print("========================================")
-        print("Error type:", type(e).__name__)
-        print("Error:", str(e))
-        print("========================================\n")
-
+        logger.exception("CALL CHECK ERROR")
 
         return jsonify({
 
@@ -1715,12 +1826,21 @@ def check_call():
             "error_type": type(e).__name__
 
         }), 500
-        # ============================================================
+
+
+# ============================================================
 # SCREENSHOT SCANNER API
 # ============================================================
 
 @app.route("/scan-image", methods=["POST"])
 def scan_image():
+    """Run OCR on an uploaded screenshot, then classify the
+    extracted text.
+
+    Expects multipart/form-data with an `image` file field and an
+    optional `lang` field ("en"|"hi"). Validates file presence,
+    filename, and extension before running OCR.
+    """
 
     try:
 
@@ -1855,7 +1975,7 @@ def scan_image():
         # Limit OCR text
         # ----------------------------------------------------
 
-        extracted_text = extracted_text[:3000]
+        extracted_text = extracted_text[:MAX_TEXT_LENGTH]
 
 
         # ----------------------------------------------------
@@ -1880,13 +2000,7 @@ def scan_image():
 
     except Exception as e:
 
-        print("\n========================================")
-        print("SCREENSHOT SCANNING ERROR")
-        print("========================================")
-        print("Error type:", type(e).__name__)
-        print("Error:", str(e))
-        print("========================================\n")
-
+        logger.exception("SCREENSHOT SCANNING ERROR")
 
         return jsonify({
 
@@ -1898,7 +2012,9 @@ def scan_image():
             "error_type": type(e).__name__
 
         }), 500
-        # ============================================================
+
+
+# ============================================================
 # RUN FLASK APPLICATION
 # ============================================================
 
