@@ -22,6 +22,24 @@ from flask import Flask, render_template, request, jsonify
 # OCR
 from scanner.ocr import extract_text_from_image
 
+# AI Assistant (Gemini) — wrapped so the rest of the app still runs
+# even if this module or its dependency isn't installed/configured yet.
+try:
+    from assistant.gemini_assistant import get_assistant_reply
+    ASSISTANT_AVAILABLE = True
+except Exception:  # noqa: BLE001 — any import/setup failure disables the assistant only
+    logging.getLogger("digital_sathi").exception(
+        "Could not load assistant module — AI Assistant feature will be disabled"
+    )
+    ASSISTANT_AVAILABLE = False
+
+    def get_assistant_reply(message, lang="en"):
+        reply = (
+            "AI सहायक अभी सेट नहीं है।" if lang == "hi" else
+            "The AI assistant isn't set up yet."
+        )
+        return {"type": "unavailable", "reply": reply, "youtube_link": None}
+
 
 # ============================================================
 # LOGGING
@@ -2006,6 +2024,103 @@ def scan_image():
 
             "error": (
                 "Screenshot scanning failed: "
+                + str(e)
+            ),
+
+            "error_type": type(e).__name__
+
+        }), 500
+
+
+# ============================================================
+# AI ASSISTANT CHAT API
+# ============================================================
+
+@app.route("/chat", methods=["POST"])
+def chat():
+    """Conversational companion for everyday requests (e.g. "play a
+    bhajan", "sunao gaana") — separate from the scam-detection pipeline
+    above, powered by `assistant.gemini_assistant`. A missing/failed
+    Gemini setup degrades gracefully to a clear message rather than
+    breaking the route, and song requests work even without Gemini.
+
+    Expects JSON body: {"message": str, "lang": "en"|"hi"}.
+    Returns: {"type": str, "reply": str, "youtube_link": str | None}.
+    """
+
+    try:
+
+        # ----------------------------------------------------
+        # Get JSON
+        # ----------------------------------------------------
+
+        data = request.get_json(
+            silent=True
+        ) or {}
+
+
+        # ----------------------------------------------------
+        # Get message + requested output language
+        # ----------------------------------------------------
+
+        message = (
+            data.get("message") or ""
+        ).strip()
+
+        lang = (
+            data.get("lang") or "en"
+        ).strip().lower()
+
+        if lang not in ("en", "hi"):
+            lang = "en"
+
+
+        # ----------------------------------------------------
+        # Empty input
+        # ----------------------------------------------------
+
+        if not message:
+
+            error_msg = (
+                "कृपया एक संदेश लिखें।"
+                if lang == "hi" else
+                "Please type a message."
+            )
+
+            return jsonify({
+                "error": error_msg
+            }), 400
+
+
+        # ----------------------------------------------------
+        # Limit text
+        # ----------------------------------------------------
+
+        message = message[:MAX_TEXT_LENGTH]
+
+
+        # ----------------------------------------------------
+        # Get assistant reply (song link or Gemini chat)
+        # ----------------------------------------------------
+
+        result = get_assistant_reply(message, lang=lang)
+
+
+        # ----------------------------------------------------
+        # Return result
+        # ----------------------------------------------------
+
+        return jsonify(result)
+
+
+    except Exception as e:
+
+        logger.exception("CHAT ASSISTANT ERROR")
+
+        return jsonify({
+
+            "error": (
+                "Chat failed: "
                 + str(e)
             ),
 
